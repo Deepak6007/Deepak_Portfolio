@@ -1,0 +1,2127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#09090b">
+    <title>Bojjagani Deepak — Designer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        /* BASE */
+        
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0
+        }
+        
+        html {
+            scroll-behavior: smooth;
+            -webkit-text-size-adjust: 100%;
+            text-size-adjust: 100%
+        }
+        
+        body {
+            background: #09090b;
+            color: #edebe6;
+            font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 16px;
+            line-height: 1.7;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased
+        }
+        
+        a {
+            color: inherit;
+            text-decoration: none;
+            -webkit-tap-highlight-color: transparent
+        }
+        
+        button {
+            font-family: inherit;
+            -webkit-tap-highlight-color: transparent
+        }
+        
+        input,
+        select,
+        textarea {
+            font-family: 'DM Sans', -apple-system, sans-serif
+        }
+        /* VARIABLES */
+        
+         :root {
+            --bg: #09090b;
+            --surf: #101014;
+            --card: #0e0e12;
+            --bdr: #1f1f28;
+            --acc: #e8622a;
+            --adim: rgba(232, 98, 42, 0.11);
+            --aglow: rgba(232, 98, 42, 0.2);
+            --txt: #edebe6;
+            --muted: #6a6875;
+            --rad: 14px;
+            --p: 20px;
+        }
+        /* LAYOUT */
+        
+        .wrap {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 0 var(--p)
+        }
+        
+        .section {
+            padding: 72px var(--p);
+            max-width: 1080px;
+            margin: 0 auto
+        }
+        
+        .surf {
+            background: var(--surf)
+        }
+        /* TYPE */
+        
+        .tag {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: .13em;
+            text-transform: uppercase;
+            color: var(--acc);
+            margin-bottom: 8px
+        }
+        
+        .h2 {
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(1.65rem, 5vw, 2.55rem);
+            font-weight: 800;
+            letter-spacing: -.03em;
+            line-height: 1.1
+        }
+        
+        .grey {
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.8;
+            margin-top: 8px
+        }
+        /* ── NAV ─────────────────────────────── */
+        
+        #topnav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 200;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 13px var(--p);
+            background: #09090b;
+            border-bottom: 1px solid var(--bdr)
+        }
+        
+        .nlogo {
+            font-family: 'Syne', sans-serif;
+            font-weight: 800;
+            font-size: 18px;
+            color: var(--txt)
+        }
+        
+        .nlogo em {
+            color: var(--acc);
+            font-style: normal
+        }
+        
+        .nlinks {
+            display: flex;
+            gap: 26px;
+            list-style: none
+        }
+        
+        .nlinks a {
+            color: var(--muted);
+            font-size: 13px;
+            font-weight: 500;
+            transition: color .2s
+        }
+        
+        .nlinks a:hover {
+            color: var(--txt)
+        }
+        
+        .nright {
+            display: flex;
+            align-items: center;
+            gap: 12px
+        }
+        
+        .nhire {
+            padding: 8px 18px;
+            background: var(--acc);
+            color: #fff;
+            border-radius: 7px;
+            font-weight: 700;
+            font-size: 13px
+        }
+        
+        .hambtn {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 4px
+        }
+        
+        .hambtn span {
+            display: block;
+            width: 22px;
+            height: 2px;
+            background: var(--txt);
+            border-radius: 2px;
+            transition: all .3s
+        }
+        /* Mobile menu */
+        
+        #mobnav {
+            display: none;
+            position: fixed;
+            top: 56px;
+            left: 0;
+            right: 0;
+            z-index: 199;
+            background: #09090b;
+            border-bottom: 1px solid var(--bdr);
+            flex-direction: column;
+            padding: 14px var(--p) 18px
+        }
+        
+        #mobnav.open {
+            display: flex
+        }
+        
+        #mobnav a {
+            padding: 12px 4px;
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--txt);
+            border-bottom: 1px solid var(--bdr)
+        }
+        
+        #mobnav a:last-child {
+            border-bottom: none
+        }
+        /* ── HERO ─────────────────────────────── */
+        
+        #hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 108px var(--p) 60px;
+            position: relative;
+            overflow: hidden
+        }
+        
+        .hero-wrap {
+            max-width: 1080px;
+            margin: 0 auto;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            gap: 40px
+        }
+        
+        .hleft {
+            flex: 1;
+            min-width: 0
+        }
+        
+        .hright {
+            width: 320px;
+            flex-shrink: 0
+        }
+        
+        .apill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 14px;
+            border-radius: 99px;
+            border: 1px solid rgba(232, 98, 42, .28);
+            background: rgba(232, 98, 42, .07);
+            font-size: 10px;
+            font-weight: 700;
+            color: var(--acc);
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            margin-bottom: 20px
+        }
+        
+        .dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--acc);
+            flex-shrink: 0;
+            animation: blink 2s infinite;
+            -webkit-animation: blink 2s infinite
+        }
+        
+        @keyframes blink {
+            0%,
+            100% {
+                opacity: 1
+            }
+            50% {
+                opacity: .3
+            }
+        }
+        
+        @-webkit-keyframes blink {
+            0%,
+            100% {
+                opacity: 1
+            }
+            50% {
+                opacity: .3
+            }
+        }
+        
+        .hname {
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(2.7rem, 9vw, 5rem);
+            font-weight: 800;
+            line-height: .95;
+            letter-spacing: -.04em;
+            margin-bottom: 12px
+        }
+        
+        .hname .fn {
+            color: var(--acc);
+            display: block
+        }
+        
+        .hname .ln {
+            color: var(--txt);
+            display: block
+        }
+        
+        .hrole {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--muted);
+            letter-spacing: .07em;
+            text-transform: uppercase;
+            margin-bottom: 14px
+        }
+        
+        .hrole b {
+            color: var(--txt)
+        }
+        
+        .hbio {
+            font-size: 15px;
+            color: var(--muted);
+            line-height: 1.85;
+            margin-bottom: 24px;
+            max-width: 420px
+        }
+        
+        .hbio strong {
+            color: var(--txt);
+            font-weight: 500
+        }
+        
+        .ctarow {
+            display: flex;
+            gap: 11px;
+            flex-wrap: wrap
+        }
+        
+        .bfill {
+            padding: 13px 24px;
+            background: var(--acc);
+            color: #fff;
+            font-weight: 700;
+            font-size: 14px;
+            border-radius: 9px;
+            box-shadow: 0 4px 20px var(--aglow)
+        }
+        
+        .bghost {
+            padding: 13px 24px;
+            border: 1px solid var(--bdr);
+            color: var(--txt);
+            font-weight: 500;
+            font-size: 14px;
+            border-radius: 9px
+        }
+        
+        .hstats {
+            display: flex;
+            gap: 26px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+            padding-top: 22px;
+            border-top: 1px solid var(--bdr)
+        }
+        
+        .sn {
+            font-family: 'Syne', sans-serif;
+            font-size: 26px;
+            font-weight: 800;
+            line-height: 1;
+            color: var(--txt)
+        }
+        
+        .sn sup {
+            font-size: 13px;
+            color: var(--acc)
+        }
+        
+        .sl {
+            font-size: 11px;
+            color: var(--muted);
+            margin-top: 3px
+        }
+        /* Hero card */
+        
+        .hcard {
+            background: var(--card);
+            border: 1px solid var(--bdr);
+            border-radius: var(--rad);
+            padding: 20px;
+            position: relative;
+            overflow: hidden
+        }
+        
+        .hcard::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 150px;
+            height: 150px;
+            background: var(--aglow);
+            border-radius: 50%;
+            filter: blur(50px);
+            pointer-events: none
+        }
+        
+        .clbl {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: .13em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 9px
+        }
+        
+        .tpills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 14px
+        }
+        
+        .tp {
+            padding: 5px 9px;
+            background: var(--surf);
+            border: 1px solid var(--bdr);
+            border-radius: 5px;
+            font-size: 11px;
+            color: var(--txt)
+        }
+        
+        .hdiv {
+            height: 1px;
+            background: var(--bdr);
+            margin: 12px 0
+        }
+        
+        .erow {
+            display: flex;
+            gap: 9px;
+            margin-bottom: 8px;
+            align-items: flex-start
+        }
+        
+        .erow:last-of-type {
+            margin-bottom: 0
+        }
+        
+        .edot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--acc);
+            flex-shrink: 0;
+            margin-top: 5px
+        }
+        
+        .etxt {
+            font-size: 12px;
+            color: var(--muted);
+            line-height: 1.5
+        }
+        
+        .etxt strong {
+            color: var(--txt);
+            font-weight: 600
+        }
+        
+        .hcfoot {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 12px
+        }
+        
+        .hloc {
+            font-size: 11px;
+            color: var(--muted)
+        }
+        
+        .hrem {
+            font-size: 10px;
+            font-weight: 700;
+            color: var(--acc);
+            background: var(--adim);
+            padding: 3px 8px;
+            border-radius: 4px
+        }
+        /* blobs */
+        
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(90px);
+            pointer-events: none;
+            z-index: 0
+        }
+        
+        .b1 {
+            width: 440px;
+            height: 440px;
+            background: rgba(232, 98, 42, .05);
+            top: -100px;
+            right: -130px
+        }
+        
+        .b2 {
+            width: 300px;
+            height: 300px;
+            background: rgba(232, 98, 42, .04);
+            bottom: -50px;
+            left: 8%
+        }
+        /* ── ABOUT ─────────────────────────────── */
+        
+        .agrid {
+            display: flex;
+            gap: 48px;
+            align-items: flex-start
+        }
+        
+        .aleft {
+            flex: 1.1;
+            min-width: 0
+        }
+        
+        .aright {
+            flex: .9;
+            min-width: 0
+        }
+        
+        .ap {
+            font-size: 14px;
+            color: var(--muted);
+            line-height: 1.85;
+            margin-top: 10px
+        }
+        
+        .ap strong {
+            color: var(--txt);
+            font-weight: 500
+        }
+        
+        .vprops {
+            display: flex;
+            flex-direction: column;
+            gap: 9px;
+            margin-top: 18px
+        }
+        
+        .vp {
+            display: flex;
+            gap: 11px;
+            align-items: flex-start;
+            padding: 13px 15px;
+            background: var(--card);
+            border: 1px solid var(--bdr);
+            border-radius: 10px
+        }
+        
+        .vico {
+            width: 30px;
+            height: 30px;
+            border-radius: 7px;
+            background: var(--adim);
+            border: 1px solid rgba(232, 98, 42, .17);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            flex-shrink: 0
+        }
+        
+        .vt {
+            font-weight: 600;
+            font-size: 13px;
+            margin-bottom: 2px
+        }
+        
+        .vd {
+            font-size: 12px;
+            color: var(--muted);
+            line-height: 1.5
+        }
+        
+        .sblock {
+            margin-top: 20px
+        }
+        
+        .sg {
+            margin-bottom: 14px
+        }
+        
+        .sgl {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 6px
+        }
+        
+        .sgp {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px
+        }
+        
+        .chip {
+            padding: 5px 9px;
+            background: var(--surf);
+            border: 1px solid var(--bdr);
+            border-radius: 5px;
+            font-size: 12px;
+            color: var(--txt)
+        }
+        
+        .estack {
+            display: flex;
+            flex-direction: column;
+            gap: 9px
+        }
+        
+        .eitem {
+            display: flex;
+            gap: 11px;
+            align-items: flex-start;
+            padding: 13px 15px;
+            background: var(--card);
+            border: 1px solid var(--bdr);
+            border-radius: 11px
+        }
+        
+        .eico {
+            width: 34px;
+            height: 34px;
+            border-radius: 8px;
+            background: var(--adim);
+            border: 1px solid rgba(232, 98, 42, .17);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            flex-shrink: 0
+        }
+        
+        .euni {
+            font-weight: 600;
+            font-size: 13px;
+            line-height: 1.3
+        }
+        
+        .edeg {
+            font-size: 12px;
+            color: var(--muted);
+            margin-top: 3px
+        }
+        
+        .eyr {
+            font-size: 11px;
+            color: var(--acc);
+            font-weight: 700;
+            margin-top: 3px
+        }
+        
+        .plinks {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-top: 9px
+        }
+        
+        .plink {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 14px;
+            background: var(--card);
+            border: 1px solid var(--bdr);
+            border-radius: 9px;
+            font-size: 13px;
+            font-weight: 500
+        }
+        
+        .pico {
+            color: var(--acc);
+            font-style: normal;
+            font-weight: 900;
+            width: 16px;
+            text-align: center
+        }
+        
+        .parr {
+            margin-left: auto;
+            font-size: 11px;
+            color: var(--muted)
+        }
+        
+        .abox {
+            margin-top: 14px;
+            padding: 15px;
+            background: var(--card);
+            border: 1px solid var(--bdr);
+            border-radius: 11px
+        }
+        
+        .ar {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            color: var(--muted);
+            margin-bottom: 7px
+        }
+        
+        .ar:last-child {
+            margin-bottom: 0
+        }
+        
+        .ar em {
+            color: var(--acc);
+            font-style: normal
+        }
+        /* mobile tools */
+        
+        #mtools {
+            display: none;
+            margin-top: 14px;
+            padding: 15px;
+            background: var(--card);
+            border: 1px solid var(--bdr);
+            border-radius: 11px
+        }
+        /* ── EXPERIENCE ─────────────────────────── */
+        
+        .tline {
+            display: flex;
+            flex-direction: column;
+            gap: 13px;
+            margin-top: 26px
+        }
+        
+        .expc {
+            background: var(--card);
+            border: 1px solid var(--bdr);
+            border-radius: var(--rad);
+            padding: 20px;
+            display: flex;
+            gap: 15px
+        }
+        
+        .obadge {
+            width: 48px;
+            height: 48px;
+            border-radius: 11px;
+            background: var(--adim);
+            border: 1px solid rgba(232, 98, 42, .17);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Syne', sans-serif;
+            font-weight: 800;
+            font-size: 9px;
+            color: var(--acc);
+            text-align: center;
+            line-height: 1.3;
+            flex-shrink: 0
+        }
+        
+        .ebody {
+            flex: 1;
+            min-width: 0
+        }
+        
+        .etop {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 4px
+        }
+        
+        .etitle {
+            font-family: 'Syne', sans-serif;
+            font-size: 15px;
+            font-weight: 700
+        }
+        
+        .eper {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--acc);
+            background: var(--adim);
+            padding: 3px 8px;
+            border-radius: 4px;
+            white-space: nowrap
+        }
+        
+        .eorg {
+            font-size: 12px;
+            color: var(--muted);
+            margin-bottom: 11px
+        }
+        
+        .buls {
+            display: flex;
+            flex-direction: column;
+            gap: 5px
+        }
+        
+        .bul {
+            display: flex;
+            gap: 8px;
+            font-size: 13px;
+            color: var(--muted);
+            align-items: flex-start;
+            line-height: 1.6
+        }
+        
+        .bul::before {
+            content: '▸';
+            color: var(--acc);
+            flex-shrink: 0;
+            font-size: 10px;
+            margin-top: 3px
+        }
+        /* ── PROJECTS ─────────────────────────── */
+        
+        .pgrid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 13px;
+            margin-top: 26px
+        }
+        
+        .pcard {
+            background: var(--card);
+            border: 1px solid var(--bdr);
+            border-radius: var(--rad);
+            overflow: hidden;
+            flex: 1 1 260px;
+            min-width: 260px
+        }
+        
+        .pthumb {
+            height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Syne', sans-serif;
+            font-size: 28px;
+            font-weight: 800;
+            letter-spacing: -.04em
+        }
+        
+        .pbody {
+            padding: 15px
+        }
+        
+        .ptags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin-bottom: 7px
+        }
+        
+        .ptag {
+            padding: 3px 7px;
+            background: var(--adim);
+            color: var(--acc);
+            border-radius: 4px;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: .05em
+        }
+        
+        .ptitle {
+            font-family: 'Syne', sans-serif;
+            font-size: 15px;
+            font-weight: 700;
+            margin-bottom: 5px
+        }
+        
+        .pdesc {
+            font-size: 12px;
+            color: var(--muted);
+            margin-bottom: 11px;
+            line-height: 1.65
+        }
+        
+        .plink2 {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--acc)
+        }
+        /* ── REVIEWS ─────────────────────────── */
+        
+        .rgrid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 13px;
+            margin-top: 26px
+        }
+        
+        .rcard {
+            background: var(--card);
+            border: 1px solid var(--bdr);
+            border-radius: var(--rad);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 11px;
+            flex: 1 1 240px;
+            min-width: 240px
+        }
+        
+        .stars {
+            color: #f59e0b;
+            font-size: 13px
+        }
+        
+        .rq {
+            font-size: 13px;
+            color: var(--muted);
+            font-style: italic;
+            line-height: 1.75;
+            flex: 1
+        }
+        
+        .rfoot {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            padding-top: 11px;
+            border-top: 1px solid var(--bdr)
+        }
+        
+        .ava {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--acc), #ff9a5c);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 11px;
+            color: #fff;
+            flex-shrink: 0
+        }
+        
+        .rn {
+            font-weight: 600;
+            font-size: 13px
+        }
+        
+        .ro {
+            font-size: 11px;
+            color: var(--muted)
+        }
+        /* ── CONTACT ─────────────────────────── */
+        
+        .ctop {
+            text-align: center;
+            margin-bottom: 40px
+        }
+        
+        .ctop .h2 {
+            max-width: 520px;
+            margin: 0 auto 10px
+        }
+        
+        .ctop .grey {
+            max-width: 440px;
+            margin: 0 auto;
+            text-align: center
+        }
+        /* Quick-reach cards */
+        
+        .qcards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 11px;
+            margin-bottom: 32px
+        }
+        
+        .qcard {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex: 1 1 190px;
+            min-width: 0;
+            padding: 15px;
+            background: var(--card);
+            border: 1px solid var(--bdr);
+            border-radius: 12px;
+            color: var(--txt)
+        }
+        
+        .qcard:active {
+            background: var(--surf)
+        }
+        
+        .qico {
+            width: 38px;
+            height: 38px;
+            border-radius: 9px;
+            background: var(--adim);
+            border: 1px solid rgba(232, 98, 42, .17);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            flex-shrink: 0;
+            color: var(--acc)
+        }
+        
+        .qlbl {
+            font-size: 10px;
+            color: var(--muted);
+            letter-spacing: .06em;
+            text-transform: uppercase;
+            margin-bottom: 2px
+        }
+        
+        .qval {
+            font-size: 13px;
+            font-weight: 600;
+            word-break: break-all;
+            line-height: 1.3
+        }
+        /* OR divider */
+        
+        .ordiv {
+            display: flex;
+            align-items: center;
+            gap: 13px;
+            margin-bottom: 28px
+        }
+        
+        .ordiv div {
+            height: 1px;
+            background: var(--bdr);
+            flex: 1
+        }
+        
+        .ordiv span {
+            font-size: 11px;
+            color: var(--muted);
+            white-space: nowrap;
+            letter-spacing: .09em;
+            text-transform: uppercase
+        }
+        /* Form card */
+        
+        .fcard {
+            background: var(--card);
+            border: 1px solid var(--bdr);
+            border-radius: var(--rad);
+            padding: 26px;
+            max-width: 660px;
+            margin: 0 auto
+        }
+        
+        .ftitle {
+            font-family: 'Syne', sans-serif;
+            font-size: 16px;
+            font-weight: 800;
+            color: var(--txt);
+            margin-bottom: 18px
+        }
+        /* Connecting overlay */
+        
+        #cOverlay {
+            display: none;
+            text-align: center;
+            padding: 36px 20px
+        }
+        
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 3px solid var(--bdr);
+            border-top-color: var(--acc);
+            margin: 0 auto 18px;
+            animation: spin .85s linear infinite;
+            -webkit-animation: spin .85s linear infinite
+        }
+        
+        @keyframes spin {
+            to {
+                transform: rotate(360deg)
+            }
+        }
+        
+        @-webkit-keyframes spin {
+            to {
+                -webkit-transform: rotate(360deg)
+            }
+        }
+        
+        #cOverlay h3 {
+            font-family: 'Syne', sans-serif;
+            font-size: 19px;
+            font-weight: 800;
+            color: var(--txt);
+            margin-bottom: 7px
+        }
+        
+        #cOverlay p {
+            font-size: 13px;
+            color: var(--muted)
+        }
+        /* Success */
+        
+        #cSuccess {
+            display: none;
+            text-align: center;
+            padding: 36px 20px
+        }
+        
+        .scheck {
+            width: 54px;
+            height: 54px;
+            border-radius: 50%;
+            background: rgba(26, 122, 80, .12);
+            border: 2px solid #1a7a50;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            margin: 0 auto 14px
+        }
+        
+        #cSuccess h3 {
+            font-family: 'Syne', sans-serif;
+            font-size: 19px;
+            font-weight: 800;
+            color: var(--txt);
+            margin-bottom: 7px
+        }
+        
+        #cSuccess p {
+            font-size: 13px;
+            color: var(--muted);
+            margin-bottom: 18px
+        }
+        
+        .rbtn {
+            padding: 10px 22px;
+            background: var(--surf);
+            border: 1px solid var(--bdr);
+            color: var(--txt);
+            border-radius: 7px;
+            font-size: 13px;
+            cursor: pointer
+        }
+        /* Form fields */
+        
+        #fFields {
+            display: flex;
+            flex-direction: column;
+            gap: 13px
+        }
+        
+        .frow2 {
+            display: flex;
+            gap: 12px
+        }
+        
+        .fg {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            flex: 1
+        }
+        
+        .fg label {
+            font-size: 11px;
+            color: var(--muted);
+            font-weight: 600;
+            letter-spacing: .04em;
+            text-transform: uppercase
+        }
+        
+        .fg input,
+        .fg select,
+        .fg textarea {
+            background: var(--surf);
+            border: 1px solid var(--bdr);
+            color: var(--txt);
+            border-radius: 8px;
+            padding: 12px 14px;
+            font-size: 16px;
+            /* 16px stops iOS zoom */
+            outline: none;
+            width: 100%;
+            -webkit-appearance: none;
+            appearance: none;
+        }
+        
+        .fg input:focus,
+        .fg select:focus,
+        .fg textarea:focus {
+            border-color: var(--acc)
+        }
+        
+        .fg textarea {
+            resize: vertical;
+            min-height: 110px
+        }
+        
+        .fg select {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%236a6875'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            padding-right: 30px;
+        }
+        
+        .fg select option {
+            background: #0e0e12;
+            color: #edebe6
+        }
+        
+        #ferr {
+            display: none;
+            font-size: 12px;
+            color: #f87171;
+            padding: 8px 12px;
+            background: rgba(248, 113, 113, .08);
+            border: 1px solid rgba(248, 113, 113, .2);
+            border-radius: 6px
+        }
+        
+        .sbtn {
+            width: 100%;
+            padding: 14px;
+            background: var(--acc);
+            color: #fff;
+            font-family: 'Syne', sans-serif;
+            font-weight: 800;
+            font-size: 15px;
+            border: none;
+            border-radius: 9px;
+            cursor: pointer;
+            box-shadow: 0 4px 20px var(--aglow);
+            letter-spacing: .02em
+        }
+        /* ── FOOTER ─────────────────────────── */
+        
+        footer {
+            background: var(--bg);
+            padding: 20px var(--p);
+            border-top: 1px solid var(--bdr);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 9px
+        }
+        
+        .flogo {
+            font-family: 'Syne', sans-serif;
+            font-weight: 800;
+            font-size: 16px
+        }
+        
+        .flogo em {
+            color: var(--acc);
+            font-style: normal
+        }
+        
+        footer p {
+            font-size: 12px;
+            color: var(--muted)
+        }
+        /* ── REVEAL ─────────────────────────── */
+        
+        .rv {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity .55s ease, transform .55s ease;
+            -webkit-transition: opacity .55s ease, -webkit-transform .55s ease
+        }
+        
+        .rv.on {
+            opacity: 1;
+            transform: none;
+            -webkit-transform: none
+        }
+        /* ── RESPONSIVE TABLET ── */
+        
+        @media(max-width:820px) {
+             :root {
+                --p: 18px
+            }
+            .nlinks {
+                display: none
+            }
+            .hambtn {
+                display: flex
+            }
+            .hero-wrap {
+                flex-direction: column
+            }
+            .hright {
+                display: none
+            }
+            #mtools {
+                display: block
+            }
+            .agrid {
+                flex-direction: column;
+                gap: 28px
+            }
+            .expc {
+                flex-direction: column
+            }
+            .obadge {
+                display: none
+            }
+            footer {
+                flex-direction: column;
+                text-align: center
+            }
+        }
+        /* ── RESPONSIVE MOBILE ── */
+        
+        @media(max-width:480px) {
+             :root {
+                --p: 16px
+            }
+            .section {
+                padding: 55px var(--p)
+            }
+            #hero {
+                padding: 96px var(--p) 50px;
+                min-height: unset
+            }
+            .hname {
+                font-size: clamp(2.5rem, 11vw, 3.2rem)
+            }
+            .hrole {
+                font-size: 10px
+            }
+            .hbio {
+                font-size: 14px
+            }
+            .ctarow {
+                flex-direction: column
+            }
+            .bfill,
+            .bghost {
+                width: 100%;
+                text-align: center;
+                padding: 13px
+            }
+            .hstats {
+                gap: 18px
+            }
+            .sn {
+                font-size: 22px
+            }
+            .frow2 {
+                flex-direction: column
+            }
+            .pcard {
+                flex: 1 1 100%;
+                min-width: unset
+            }
+            .rcard {
+                flex: 1 1 100%;
+                min-width: unset
+            }
+            .qcard {
+                flex: 1 1 100%;
+                min-width: unset
+            }
+            .h2 {
+                font-size: 1.5rem
+            }
+            .etitle {
+                font-size: 14px
+            }
+            .etop {
+                flex-direction: column;
+                gap: 4px
+            }
+            footer {
+                flex-direction: column;
+                text-align: center
+            }
+            .fcard {
+                padding: 18px
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAV -->
+    <nav id="topnav">
+        <a class="nlogo" href="#">Deepak<em>.</em></a>
+        <ul class="nlinks">
+            <li><a href="#about">About</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#projects">Work</a></li>
+            <li><a href="#reviews">Reviews</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="nright">
+            <a href="#contact" class="nhire">Hire Me</a>
+            <button class="hambtn" id="hbtn" onclick="toggleNav()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+        </div>
+    </nav>
+    <div id="mobnav">
+        <a href="#about" onclick="closeNav()">About</a>
+        <a href="#experience" onclick="closeNav()">Experience</a>
+        <a href="#projects" onclick="closeNav()">Work</a>
+        <a href="#reviews" onclick="closeNav()">Reviews</a>
+        <a href="#contact" onclick="closeNav()">Contact</a>
+    </div>
+
+    <!-- HERO -->
+    <section id="hero">
+        <div class="blob b1"></div>
+        <div class="blob b2"></div>
+        <div class="hero-wrap">
+
+            <div class="hleft">
+                <div class="apill"><span class="dot"></span>Open to Freelance &amp; Full-time</div>
+                <h1 class="hname"><span class="fn">Bojjagani</span><span class="ln">Deepak</span></h1>
+                <p class="hrole"><b>Industrial Designer</b> &nbsp;&#183;&nbsp; UI/UX Specialist &nbsp;&#183;&nbsp; 3D Visualizer</p>
+                <p class="hbio">I design <strong>products that function beautifully</strong> and <strong>experiences that feel effortless</strong> &mdash; from automotive surfaces at Maruti Suzuki to digital interfaces that put the user first.</p>
+                <div class="ctarow">
+                    <a href="#projects" class="bfill">View My Work</a>
+                    <a href="https://behance.net/deepak6007" target="_blank" rel="noopener" class="bghost">Behance &#8599;</a>
+                </div>
+                <div class="hstats">
+                    <div>
+                        <div class="sn">3<sup>+</sup></div>
+                        <div class="sl">Years of Practice</div>
+                    </div>
+                    <div>
+                        <div class="sn">3</div>
+                        <div class="sl">Industry Internships</div>
+                    </div>
+                    <div>
+                        <div class="sn">ID</div>
+                        <div class="sl">Industrial Designer Experience</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hright">
+                <div class="hcard">
+                    <div class="clbl">Software &amp; Tools</div>
+                    <div class="tpills">
+                        <span class="tp">Autodesk Alias</span><span class="tp">Fusion 360</span><span class="tp">Blender</span>
+                        <span class="tp">KeyShot</span><span class="tp">Figma</span><span class="tp">Illustrator</span>
+                        <span class="tp">Photoshop</span><span class="tp">Sketchbook</span><span class="tp">CorelDRAW</span>
+                    </div>
+                    <div class="hdiv"></div>
+                    <div class="clbl">Experience</div>
+                    <div class="erow">
+                        <div class="edot"></div>
+                        <div class="etxt"><strong>Maruti Suzuki</strong> &mdash; Alloy &amp; Steel Wheel Design</div>
+                    </div>
+                    <div class="erow">
+                        <div class="edot"></div>
+                        <div class="etxt"><strong>Heed Jetboards</strong> &mdash; Industrial Designer</div>
+                    </div>
+                    <div class="erow">
+                        <div class="edot"></div>
+                        <div class="etxt"><strong>AS Dream Studio</strong> &mdash; Visual Design &amp; Photography</div>
+                    </div>
+                    <div class="hdiv"></div>
+                    <div class="hcfoot"><span class="hloc">&#128205; Bangalore, Karnataka</span><span class="hrem">Remote-Ready</span></div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+        <div class="section">
+            <div class="agrid">
+
+                <div class="aleft rv">
+                    <div class="tag">About Me</div>
+                    <h2 class="h2">Design is Problem-Solving.<br>I Take It Personally.</h2>
+                    <p class="ap">I'm Deepak &mdash; an Industrial &amp; Product Designer completing my Bachelor of Art &amp; Design at MS Ramaiah University. My work bridges <strong>physical product design</strong> and <strong>UI/UX design</strong>, applying human-centered
+                        thinking to both.</p>
+                    <p class="ap" style="margin-top:9px">From designing alloy wheel covers at Maruti Suzuki to ergonomic controllers at Heed Jetboards &mdash; I move concepts from sketch to production-ready proposal.</p>
+                    <div class="vprops">
+                        <div class="vp">
+                            <div class="vico">&#127950;</div>
+                            <div>
+                                <div class="vt">Automotive-Grade Surfacing</div>
+                                <div class="vd">A-Class surfacing and zebra analysis at OEM standards.</div>
+                            </div>
+                        </div>
+                        <div class="vp">
+                            <div class="vico">&#128187;</div>
+                            <div>
+                                <div class="vt">UI/UX with a Designer's Eye</div>
+                                <div class="vd">Wireframes and prototypes guided by visual hierarchy and ergonomics.</div>
+                            </div>
+                        </div>
+                        <div class="vp">
+                            <div class="vico">&#128230;</div>
+                            <div>
+                                <div class="vt">End-to-End Design Thinking</div>
+                                <div class="vd">From ideation and sketching to 3D modeling and presentation-ready renders.</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sblock">
+                        <div class="sg">
+                            <div class="sgl">UI / UX Design</div>
+                            <div class="sgp"><span class="chip">User Interface Design</span><span class="chip">UX Research</span><span class="chip">Wireframing</span><span class="chip">Prototyping</span><span class="chip">Figma</span><span class="chip">User-Centered Design</span></div>
+                        </div>
+                        <div class="sg">
+                            <div class="sgl">Industrial &amp; Product Design</div>
+                            <div class="sgp"><span class="chip">A-Class Surfacing</span><span class="chip">Automotive Exterior</span><span class="chip">Concept Ideation</span><span class="chip">Product Form Dev.</span><span class="chip">DFM (Basic)</span></div>
+                        </div>
+                        <div class="sg">
+                            <div class="sgl">Visualization</div>
+                            <div class="sgp"><span class="chip">Digital Sketching</span><span class="chip">KeyShot Rendering</span><span class="chip">3D Printing</span><span class="chip">Photography</span><span class="chip">Visual Storytelling</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="aright rv">
+                    <div class="tag">Education</div>
+                    <div class="estack">
+                        <div class="eitem">
+                            <div class="eico">&#127891;</div>
+                            <div>
+                                <div class="euni">MS Ramaiah University of Applied Sciences</div>
+                                <div class="edeg">B.Art &amp; Design &mdash; Industrial and Product Design</div>
+                                <div class="eyr">Aug 2021 &ndash; Dec 2025 &nbsp;&#183;&nbsp; Bangalore</div>
+                            </div>
+                        </div>
+                        <div class="eitem">
+                            <div class="eico">&#128218;</div>
+                            <div>
+                                <div class="euni">SRI Bhavishya Jr College</div>
+                                <div class="edeg">Higher Secondary &mdash; MPC</div>
+                                <div class="eyr">Jun 2019 &ndash; Mar 2021 &nbsp;&#183;&nbsp; Vijayawada</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="margin-top:18px">
+                        <div class="tag">Profiles</div>
+                        <div class="plinks">
+                            <a href="https://behance.net/deepak6007" target="_blank" rel="noopener" class="plink"><i class="pico">&#9674;</i>behance.net/deepak6007<span class="parr">&#8599;</span></a>
+                            <a href="https://www.linkedin.com/in/deepak6007" target="_blank" rel="noopener" class="plink"><i class="pico">in</i>linkedin.com/in/deepak6007<span class="parr">&#8599;</span></a>
+                        </div>
+                    </div>
+                    <div class="abox">
+                        <div class="tag" style="margin-bottom:8px">Available For</div>
+                        <div class="ar"><em>&#10003;</em>Freelance design projects</div>
+                        <div class="ar"><em>&#10003;</em>Full-time design roles</div>
+                        <div class="ar"><em>&#10003;</em>Remote collaboration</div>
+                        <div class="ar"><em>&#10003;</em>Design consultancy &amp; reviews</div>
+                    </div>
+                    <!-- Mobile tools (hero card hidden on mobile) -->
+                    <div id="mtools">
+                        <div class="tag" style="margin-bottom:8px">Software &amp; Tools</div>
+                        <div class="tpills"><span class="tp">Autodesk Alias</span><span class="tp">Fusion 360</span><span class="tp">Blender</span><span class="tp">KeyShot</span><span class="tp">Figma</span><span class="tp">Illustrator</span><span class="tp">Photoshop</span>
+                            <span class="tp">Sketchbook</span><span class="tp">CorelDRAW</span></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience" class="surf">
+        <div class="section">
+            <div class="rv">
+                <div class="tag">Experience</div>
+                <h2 class="h2">Where I've Made an Impact</h2>
+                <p class="grey" style="max-width:460px">Real-world design practice across India's automotive, product, and creative industries.</p>
+            </div>
+            <div class="tline">
+
+                <div class="expc rv">
+                    <div class="obadge">MUL</div>
+                    <div class="ebody">
+                        <div class="etop">
+                            <div class="etitle">Industrial Design Intern &mdash; Alloy &amp; Steel Wheel Design</div>
+                            <div class="eper">May &ndash; Sep 2025</div>
+                        </div>
+                        <div class="eorg">Maruti Suzuki India Limited &nbsp;&#183;&nbsp; Gurugram, Haryana</div>
+                        <div class="buls">
+                            <div class="bul">Designed 16-inch and 17-inch alloy wheel covers for production passenger vehicles</div>
+                            <div class="bul">Developed steel wheel concepts within strict dimensional and manufacturing tolerances</div>
+                            <div class="bul">Refined surface forms aligned with Maruti Suzuki's established automotive design language</div>
+                            <div class="bul">Translated concept sketches into production-oriented proposals for formal design reviews</div>
+                            <div class="bul">Gained exposure to OEM workflows, cross-functional reviews, and feasibility evaluation</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="expc rv">
+                    <div class="obadge">HEED</div>
+                    <div class="ebody">
+                        <div class="etop">
+                            <div class="etitle">Industrial Designer</div>
+                            <div class="eper">March 2025</div>
+                        </div>
+                        <div class="eorg">Heed Jetboards &nbsp;&#183;&nbsp; Mysore, Karnataka</div>
+                        <div class="buls">
+                            <div class="bul">Engineered ergonomic 3D models of jet board joystick controller in Fusion 360</div>
+                            <div class="bul">Produced concept sketches translating user requirements into refined product forms</div>
+                            <div class="bul">Designed and animated the propeller mechanism for stakeholder presentations</div>
+                            <div class="bul">Contributed to life jacket design integrating safety, comfort, and aesthetic coherence</div>
+                            <div class="bul">Delivered surface-refined, presentation-quality visualizations for the full portfolio</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="expc rv">
+                    <div class="obadge">ASDS</div>
+                    <div class="ebody">
+                        <div class="etop">
+                            <div class="etitle">Photography &amp; Visual Design Intern</div>
+                            <div class="eper">Jun &ndash; Jul 2024</div>
+                        </div>
+                        <div class="eorg">AS Dream Studio &nbsp;&#183;&nbsp; Bangalore, Karnataka</div>
+                        <div class="buls">
+                            <div class="bul">Designed client-facing posters and promotional banners applying brand guidelines</div>
+                            <div class="bul">Assisted in commercial photography &mdash; lighting, framing, and compositional direction</div>
+                            <div class="bul">Captured and edited behind-the-scenes content for social media and brand storytelling</div>
+                            <div class="bul">Strengthened post-production skills across Photoshop and video editing workflows</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+        <div class="section">
+            <div class="rv">
+                <div class="tag">Selected Work</div>
+                <h2 class="h2">Services &amp; Expertise</h2>
+                <p class="grey" style="max-width:500px">Four core disciplines — each delivered with professional precision, industry-standard tools, and a strong design process.</p>
+            </div>
+
+            <!-- Row 1: UI/UX + Digital Modeling -->
+            <div style="display:flex;flex-wrap:wrap;gap:16px;margin-top:28px">
+
+                <!-- UI/UX Design -->
+                <div class="pcard rv" style="flex:1 1 300px;min-width:280px;display:flex;flex-direction:column">
+                    <div style="height:10px;background:linear-gradient(90deg,#8b5cf6,#d580ff);border-radius:14px 14px 0 0"></div>
+                    <div class="pbody" style="flex:1;display:flex;flex-direction:column;padding:22px">
+                        <div style="display:flex;align-items:center;gap:14px;margin-bottom:16px">
+                            <div style="width:48px;height:48px;border-radius:12px;background:rgba(139,92,246,0.12);border:1px solid rgba(139,92,246,0.25);display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0">&#128187;</div>
+                            <div>
+                                <div style="font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#8b5cf6;margin-bottom:3px">01 &mdash; Design</div>
+                                <div style="font-family:'Syne',sans-serif;font-size:17px;font-weight:800;color:var(--txt)">UI/UX Design</div>
+                            </div>
+                        </div>
+                        <p style="font-size:13px;color:var(--muted);line-height:1.8;margin-bottom:16px">Creating intuitive digital experiences — from initial wireframes and user flows to high-fidelity prototypes that are tested, refined, and ready for development.</p>
+                        <div style="display:flex;flex-direction:column;gap:7px;margin-bottom:18px;flex:1">
+                            <div style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:2px">Deliverables</div>
+                            <div style="display:flex;gap:6px;align-items:center;font-size:12px;color:var(--muted)"><span style="color:#8b5cf6;font-size:10px">&#9646;</span>Wireframes &amp; User Flows</div>
+                            <div style="display:flex;gap:6px;align-items:center;font-size:12px;color:var(--muted)"><span style="color:#8b5cf6;font-size:10px">&#9646;</span>Interactive Prototypes</div>
+                            <div style="display:flex;gap:6px;align-items:center;font-size:12px;color:var(--muted)"><span style="color:#8b5cf6;font-size:10px">&#9646;</span>UI Screens &amp; Design Systems</div>
+                            <div style="display:flex;gap:6px;align-items:center;font-size:12px;color:var(--muted)"><span style="color:#8b5cf6;font-size:10px">&#9646;</span>UX Research &amp; User Testing</div>
+                        </div>
+                        <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:16px">
+                            <span class="ptag" style="background:rgba(139,92,246,0.1);color:#8b5cf6">Figma</span>
+                            <span class="ptag" style="background:rgba(139,92,246,0.1);color:#8b5cf6">Adobe XD</span>
+                            <span class="ptag" style="background:rgba(139,92,246,0.1);color:#8b5cf6">Prototyping</span>
+                        </div>
+                        <a href="https://behance.net/deepak6007" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:#8b5cf6;text-decoration:none">View Projects &#8599;</a>
+                    </div>
+                </div>
+
+                <!-- Digital Modeling -->
+                <div class="pcard rv" style="flex:1 1 300px;min-width:280px;display:flex;flex-direction:column">
+                    <div style="height:10px;background:linear-gradient(90deg,#059669,#2de0a0);border-radius:14px 14px 0 0"></div>
+                    <div class="pbody" style="flex:1;display:flex;flex-direction:column;padding:22px">
+                        <div style="display:flex;align-items:center;gap:14px;margin-bottom:16px">
+                            <div style="width:48px;height:48px;border-radius:12px;background:rgba(45,224,160,0.1);border:1px solid rgba(45,224,160,0.22);display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0">&#128230;</div>
+                            <div>
+                                <div style="font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#2de0a0;margin-bottom:3px">02 &mdash; 3D</div>
+                                <div style="font-family:'Syne',sans-serif;font-size:17px;font-weight:800;color:var(--txt)">Digital Modeling</div>
+                            </div>
+                        </div>
+                        <p style="font-size:13px;color:var(--muted);line-height:1.8;margin-bottom:16px">Transforming concepts into precise 3D forms — automotive surfaces, product bodies, and mechanism animations built to production-ready standards.</p>
+                        <div style="display:flex;flex-direction:column;gap:7px;margin-bottom:18px;flex:1">
+                            <div style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:2px">Deliverables</div>
+                            <div style="display:flex;gap:6px;align-items:center;font-size:12px;color:var(--muted)"><span style="color:#2de0a0;font-size:10px">&#9646;</span>A-Class Surface Models</div>
+                            <div style="display:flex;gap:6px;align-items:center;font-size:12px;color:var(--muted)"><span style="color:#2de0a0;font-size:10px">&#9646;</span>Photorealistic Renders</div>
+                            <div style="display:flex;gap:6px;align-items:center;font-size:12px;color:var(--muted)"><span style="color:#2de0a0;font-size:10px">&#9646;</span>Product Animations</div>
+                            <div style="display:flex;gap:6px;align-items:center;font-size:12px;color:var(--muted)"><span style="color:#2de0a0;font-size:10px">&#9646;</span>3D Print-Ready Files</div>
+                        </div>
+                        <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:16px">
+                            <span class="ptag" style="background:rgba(45,224,160,0.08);color:#2de0a0">Blender</span>
+                            <span class="ptag" style="background:rgba(45,224,160,0.08);color:#2de0a0">Autodesk Alias</span>
+                            <span class="ptag" style="background:rgba(45,224,160,0.08);color:#2de0a0">KeyShot</span>
+                        </div>
+                        <a href="https://behance.net/deepak6007" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:#2de0a0;text-decoration:none">View Projects &#8599;</a>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Row 2: Photography + Graphic Design -->
+            <div style="display:flex;flex-wrap:wrap;gap:16px;margin-top:16px">
+
+                <!-- Photography -->
+                <div class="pcard rv" style="flex:1 1 300px;min-width:280px;display:flex;flex-direction:column">
+                    <div style="height:10px;background:linear-gradient(90deg,#d97706,#fbb040);border-radius:14px 14px 0 0"></div>
+                    <div class="pbody" style="flex:1;display:flex;flex-direction:column;padding:22px">
+                        <div style="display:flex;align-items:center;gap:14px;margin-bottom:16px">
+                            <div style="width:48px;height:48px;border-radius:12px;background:rgba(251,176,64,0.1);border:1px solid rgba(251,176,64,0.22);display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0">&#128247;</div>
+                            <div>
+                                <div style="font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#fbb040;margin-bottom:3px">03 &mdash; Visual</div>
+                                <div style="font-family:'Syne',sans-serif;font-size:17px;font-weight:800;color:var(--txt)">Photography</div>
+                            </div>
+                        </div>
+                        <p style="font-size:13px;color:var(--muted);line-height:1.8;margin-bottom:16px">Professional commercial photography and visual storytelling — product shoots, brand campaigns, and BTS content edited for maximum visual impact.</p>
+                        <div style="display:flex;flex-direction:column;gap:7px;margin-bottom:18px;flex:1">
+                            <div style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:2px">Deliverables</div>
+                            <div style="display:flex;gap:6px;align-items:center;font-size:12px;color:var(--muted)"><span style="color:#fbb040;font-size:10px">&#9646;</span>Product &amp; Brand Photography</div>
+                            <div style="display:flex;gap:6px;align-items:center;font-size:12px;color:var(--muted)"><span style="color:#fbb040;font-size:10px">&#9646;</span>Edited High-Res Images</div>
+                            <div style="display:flex;gap:6px;align-items:center;font-size:12px;color:var(--muted)"><span style="color:#fbb040;font-size:10px">&#9646;</span>BTS Video &amp; Reels</div>
+                            <div style="display:flex;gap:6px;align-items:center;font-size:12px;color:var(--muted)"><span style="color:#fbb040;font-size:10px">&#9646;</span>Social Media Visuals</div>
+                        </div>
+                        <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:16px">
+                            <span class="ptag" style="background:rgba(251,176,64,0.08);color:#fbb040">Lightroom</span>
+                            <span class="ptag" style="background:rgba(251,176,64,0.08);color:#fbb040">Photoshop</span>
+                            <span class="ptag" style="background:rgba(251,176,64,0.08);color:#fbb040">Premiere Pro</span>
+                        </div>
+                        <a href="https://behance.net/deepak6007" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:#fbb040;text-decoration:none">View Projects &#8599;</a>
+                    </div>
+                </div>
+
+                <!-- Graphic Design -->
+                <div class="pcard rv" style="flex:1 1 300px;min-width:280px;display:flex;flex-direction:column">
+                    <div style="height:10px;background:linear-gradient(90deg,#db2777,#f472b6);border-radius:14px 14px 0 0"></div>
+                    <div class="pbody" style="flex:1;display:flex;flex-direction:column;padding:22px">
+                        <div style="display:flex;align-items:center;gap:14px;margin-bottom:16px">
+                            <div style="width:48px;height:48px;border-radius:12px;background:rgba(244,114,182,0.1);border:1px solid rgba(244,114,182,0.22);display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0">&#127912;</div>
+                            <div>
+                                <div style="font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#f472b6;margin-bottom:3px">04 &mdash; Branding</div>
+                                <div style="font-family:'Syne',sans-serif;font-size:17px;font-weight:800;color:var(--txt)">Graphic Design</div>
+                            </div>
+                        </div>
+                        <p style="font-size:13px;color:var(--muted);line-height:1.8;margin-bottom:16px">Bold, purposeful visual design — posters, brand identities, marketing materials, and print-ready artwork crafted to communicate clearly and leave a lasting impression.</p>
+                        <div style="display:flex;flex-direction:column;gap:7px;margin-bottom:18px;flex:1">
+                            <div style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:2px">Deliverables</div>
+                            <div style="display:flex;gap:6px;align-items:center;font-size:12px;color:var(--muted)"><span style="color:#f472b6;font-size:10px">&#9646;</span>Posters &amp; Banners</div>
+                            <div style="display:flex;gap:6px;align-items:center;font-size:12px;color:var(--muted)"><span style="color:#f472b6;font-size:10px">&#9646;</span>Brand Identity &amp; Logos</div>
+                            <div style="display:flex;gap:6px;align-items:center;font-size:12px;color:var(--muted)"><span style="color:#f472b6;font-size:10px">&#9646;</span>Social Media Graphics</div>
+                            <div style="display:flex;gap:6px;align-items:center;font-size:12px;color:var(--muted)"><span style="color:#f472b6;font-size:10px">&#9646;</span>Print-Ready Artwork</div>
+                        </div>
+                        <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:16px">
+                            <span class="ptag" style="background:rgba(244,114,182,0.08);color:#f472b6">Illustrator</span>
+                            <span class="ptag" style="background:rgba(244,114,182,0.08);color:#f472b6">CorelDRAW</span>
+                            <span class="ptag" style="background:rgba(244,114,182,0.08);color:#f472b6">Photoshop</span>
+                        </div>
+                        <a href="https://behance.net/deepak6007" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:#f472b6;text-decoration:none">View Projects &#8599;</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- REVIEWS -->
+    <section id="reviews" class="surf">
+        <div class="section">
+            <div class="rv">
+                <div class="tag">Testimonials</div>
+                <h2 class="h2">Trusted by Those Who've Worked With Me</h2>
+                <p class="grey" style="max-width:440px">Feedback from industry mentors, collaborators, and creative partners.</p>
+            </div>
+            <div class="rgrid">
+                <div class="rcard rv">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p class="rq">Deepak has a sharp design eye and a strong grasp of automotive form language. His attention to surfacing quality and feasibility stood out throughout the internship.</p>
+                    <div class="rfoot">
+                        <div class="ava">MS</div>
+                        <div>
+                            <div class="rn">Design Mentor</div>
+                            <div class="ro">Maruti Suzuki India Ltd.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="rcard rv">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p class="rq">Excellent problem-solving ability. Deepak understood our ergonomic requirements rapidly and delivered 3D models that were both functionally sound and visually compelling.</p>
+                    <div class="rfoot">
+                        <div class="ava" style="background:linear-gradient(135deg,#0077ff,#00b4d8)">HJ</div>
+                        <div>
+                            <div class="rn">Project Lead</div>
+                            <div class="ro">Heed Jetboards, Mysore</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="rcard rv">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p class="rq">Creative, dependable, and thoroughly professional. Deepak elevated our studio's visual output and handled commercial shoots with genuine confidence.</p>
+                    <div class="rfoot">
+                        <div class="ava" style="background:linear-gradient(135deg,#e8a020,#e84020)">AS</div>
+                        <div>
+                            <div class="rn">Studio Director</div>
+                            <div class="ro">AS Dream Studio, Bangalore</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="rcard rv">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p class="rq">One of the most committed design students I've mentored. His work demonstrated real maturity in surfacing methodology and a strong sense of visual communication.</p>
+                    <div class="rfoot">
+                        <div class="ava" style="background:linear-gradient(135deg,#7c3aed,#db2777)">PF</div>
+                        <div>
+                            <div class="rn">Design Faculty</div>
+                            <div class="ro">MS Ramaiah University</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+        <div class="section">
+
+            <!-- Header -->
+            <div class="ctop rv">
+                <div class="tag">Contact</div>
+                <h2 class="h2">Let's Connect &amp; Create Together</h2>
+                <p class="grey">Have a project in mind? Reach out directly or send a message below. I reply within 24 hours.</p>
+            </div>
+
+            <!-- Quick-reach cards -->
+            <div class="qcards rv">
+                <a href="mailto:Bojjaganideepak@gmail.com" class="qcard">
+                    <div class="qico">&#9993;</div>
+                    <div>
+                        <div class="qlbl">Email</div>
+                        <div class="qval">Bojjaganideepak&#64;gmail.com</div>
+                    </div>
+                </a>
+                <a href="tel:+919380086551" class="qcard">
+                    <div class="qico">&#128222;</div>
+                    <div>
+                        <div class="qlbl">Phone</div>
+                        <div class="qval">+91 93800 86551</div>
+                    </div>
+                </a>
+                <a href="https://www.linkedin.com/in/deepak6007" target="_blank" rel="noopener" class="qcard">
+                    <div class="qico" style="font-weight:900;font-size:14px">in</div>
+                    <div>
+                        <div class="qlbl">LinkedIn</div>
+                        <div class="qval">linkedin.com/in/deepak6007</div>
+                    </div>
+                </a>
+                <a href="https://behance.net/deepak6007" target="_blank" rel="noopener" class="qcard">
+                    <div class="qico">&#9674;</div>
+                    <div>
+                        <div class="qlbl">Behance</div>
+                        <div class="qval">behance.net/deepak6007</div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- OR divider -->
+            <div class="ordiv rv">
+                <div></div><span>Or Send a Message</span>
+                <div></div>
+            </div>
+
+            <!-- Form card -->
+            <div class="fcard rv">
+
+                <!-- State: Connecting -->
+                <div id="cOverlay">
+                    <div class="spinner"></div>
+                    <h3>Contacting to Connect...</h3>
+                    <p>Sending your message to Deepak</p>
+                </div>
+
+                <!-- State: Success -->
+                <div id="cSuccess">
+                    <div class="scheck">&#10003;</div>
+                    <h3>Message Sent!</h3>
+                    <p>Thanks for reaching out. Deepak will reply within 24 hours.</p>
+                    <button class="rbtn" onclick="resetForm()">Send Another Message</button>
+                </div>
+
+                <!-- State: Form -->
+                <div id="fFields">
+                    <div class="ftitle">Send a Message &#9993;</div>
+                    <p style="font-size:11px;color:var(--muted);margin-bottom:4px">All fields marked <span style="color:var(--acc)">*</span> are required.</p>
+                    <div class="frow2">
+                        <div class="fg"><label>Full Name <span style="color:var(--acc)">*</span></label><input type="text" id="fname" placeholder="Your name" autocomplete="name"></div>
+                        <div class="fg"><label>Email <span style="color:var(--acc)">*</span></label><input type="email" id="femail" placeholder="you@email.com" autocomplete="email"></div>
+                    </div>
+                    <div class="fg"><label>Phone Number <span style="color:var(--acc)">*</span></label><input type="tel" id="fphone" placeholder="+91 XXXXX XXXXX" autocomplete="tel" inputmode="numeric" pattern="[0-9+\s]*" maxlength="15" onkeypress="return /[0-9+\s]/.test(event.key)"
+                            oninput="this.value=this.value.replace(/[^0-9+\s]/g,'')"></div>
+                    <div class="fg">
+                        <label>Project Type <span style="color:var(--acc)">*</span></label>
+                        <select id="ftype">
+            <option value="">Select a project type...</option>
+            <option>UI/UX Design</option>
+            <option>Digital Modeling</option>
+            <option>Graphic Design</option>
+            <option>Photography</option>
+          </select>
+                    </div>
+                    <div class="fg">
+                        <label>Project Budget <span style="color:var(--acc)">*</span></label>
+                        <select id="fbudget">
+            <option value="">— Select your project budget —</option>
+            <option value="starter">Starter &nbsp;|&nbsp; &#8377;5,000 &ndash; &#8377;10,000</option>
+            <option value="standard">Standard &nbsp;|&nbsp; &#8377;10,000 &ndash; &#8377;20,000</option>
+            <option value="professional">Professional &nbsp;|&nbsp; &#8377;20,000 &ndash; &#8377;35,000</option>
+            <option value="premium">Premium &nbsp;|&nbsp; &#8377;35,000 &ndash; &#8377;40,000</option>
+            <option value="enterprise">Enterprise &nbsp;|&nbsp; &#8377;40,000+</option>
+            <option value="negotiable">Open to Negotiation &nbsp;|&nbsp; Let's Discuss</option>
+          </select>
+                    </div>
+                    <div class="fg"><label>Your Message <span style="color:var(--acc)">*</span></label><textarea id="fmsg" placeholder="Tell me about your project, goals, and timeline..." autocomplete="off"></textarea></div>
+                    <div id="ferr"></div>
+                    <button class="sbtn" onclick="sendMsg()">Contacting to Connect &#10140;</button>
+                </div>
+
+            </div>
+
+            <p class="rv" style="text-align:center;margin-top:20px;font-size:12px;color:var(--muted)">&#128205; Bangalore, Karnataka &nbsp;&#183;&nbsp; Open to Remote Work Worldwide</p>
+
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="flogo">Deepak<em>.</em></div>
+        <p>&#169; 2026 Bojjagani Deepak &nbsp;&#183;&nbsp; Industrial Designer &amp; UI/UX Specialist</p>
+        <p>Bangalore &nbsp;&#183;&nbsp; Open to Remote Work</p>
+    </footer>
+
+    <script>
+        // ── Mobile nav
+        function toggleNav() {
+            document.getElementById('mobnav').classList.toggle('open')
+        }
+
+        function closeNav() {
+            document.getElementById('mobnav').classList.remove('open')
+        }
+        document.addEventListener('click', function(e) {
+            var m = document.getElementById('mobnav'),
+                b = document.getElementById('hbtn');
+            if (m.classList.contains('open') && !m.contains(e.target) && !b.contains(e.target)) m.classList.remove('open');
+        });
+
+        // ── Contact form
+        function sendMsg() {
+            var n = document.getElementById('fname').value.trim();
+            var e = document.getElementById('femail').value.trim();
+            var ph = document.getElementById('fphone').value.trim();
+            var m = document.getElementById('fmsg').value.trim();
+            var pt = document.getElementById('ftype').value;
+            var bd = document.getElementById('fbudget').value;
+            var err = document.getElementById('ferr');
+            err.style.display = 'none';
+            err.textContent = '';
+
+            if (!n) {
+                err.textContent = '⚠ Please enter your full name.';
+                err.style.display = 'block';
+                document.getElementById('fname').focus();
+                return;
+            }
+            if (!e || e.indexOf('@') < 1) {
+                err.textContent = '⚠ Please enter a valid email address.';
+                err.style.display = 'block';
+                document.getElementById('femail').focus();
+                return;
+            }
+            if (!ph || ph.length < 7) {
+                err.textContent = '⚠ Please enter a valid phone number.';
+                err.style.display = 'block';
+                document.getElementById('fphone').focus();
+                return;
+            }
+            if (!pt) {
+                err.textContent = '⚠ Please select a project type.';
+                err.style.display = 'block';
+                document.getElementById('ftype').focus();
+                return;
+            }
+            if (!bd) {
+                err.textContent = '⚠ Please select a budget range.';
+                err.style.display = 'block';
+                document.getElementById('fbudget').focus();
+                return;
+            }
+            if (!m) {
+                err.textContent = '⚠ Please write your message.';
+                err.style.display = 'block';
+                document.getElementById('fmsg').focus();
+                return;
+            }
+
+            // Show "Contacting to Connect..." spinner
+            document.getElementById('fFields').style.display = 'none';
+            document.getElementById('cOverlay').style.display = 'block';
+            document.getElementById('cSuccess').style.display = 'none';
+
+            // Send to Google Sheets via Apps Script Web App
+            var SHEET_URL = 'https://script.google.com/macros/s/AKfycbyWfpABmnEe16OW1zmYz3sCC0TUpABIC6At2a97Q03hqdxBU8JDQYImF-X0ygvEriMatw/exec';
+
+            fetch(SHEET_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        timestamp: new Date().toLocaleString('en-IN', {
+                            timeZone: 'Asia/Kolkata'
+                        }),
+                        name: n,
+                        email: e,
+                        phone: ph,
+                        project_type: pt,
+                        budget: bd,
+                        message: m
+                    })
+                })
+                .then(function() {
+                    document.getElementById('cOverlay').style.display = 'none';
+                    document.getElementById('cSuccess').style.display = 'block';
+                })
+                .catch(function() {
+                    document.getElementById('cOverlay').style.display = 'none';
+                    document.getElementById('cSuccess').style.display = 'block';
+                });
+        }
+
+        function resetForm() {
+            document.getElementById('fFields').style.display = 'block';
+            document.getElementById('cOverlay').style.display = 'none';
+            document.getElementById('cSuccess').style.display = 'none';
+            document.getElementById('ferr').style.display = 'none';
+            ['fname', 'femail', 'fphone', 'ftype', 'fbudget', 'fmsg'].forEach(function(id) {
+                var el = document.getElementById(id);
+                if (el) el.value = '';
+            });
+        }
+
+        // ── Scroll reveal (iOS safe)
+        (function() {
+            var els = document.querySelectorAll('.rv');
+            if (!('IntersectionObserver' in window)) {
+                for (var i = 0; i < els.length; i++) els[i].classList.add('on');
+                return;
+            }
+            var obs = new IntersectionObserver(function(entries) {
+                entries.forEach(function(en, i) {
+                    if (en.isIntersecting) {
+                        var el = en.target;
+                        setTimeout(function() {
+                            el.classList.add('on');
+                        }, i * 55);
+                        obs.unobserve(el);
+                    }
+                });
+            }, {
+                threshold: 0.06,
+                rootMargin: '0px 0px -20px 0px'
+            });
+            for (var j = 0; j < els.length; j++) obs.observe(els[j]);
+        })();
+
+        // ── Nav active
+        (function() {
+            var ss = document.querySelectorAll('section[id]');
+            var ls = document.querySelectorAll('.nlinks a');
+            window.addEventListener('scroll', function() {
+                var cur = '';
+                ss.forEach(function(s) {
+                    if (window.pageYOffset >= s.offsetTop - 140) cur = s.id;
+                });
+                ls.forEach(function(a) {
+                    a.style.color = a.getAttribute('href') === '#' + cur ? '#edebe6' : '';
+                });
+            }, {
+                passive: true
+            });
+        })();
+    </script>
+</body>
+
+</html>
