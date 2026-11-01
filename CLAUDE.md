@@ -12,20 +12,20 @@ This folder replaces the older single-file site in `../Deepak_Portfolio_Static` 
 No build step. ES modules need a server: `python -m http.server 8000`, then open http://localhost:8000.
 
 ## Structure
-- `index.html`: every section (hero, work, photography, services, about, contact) plus the case-study `<dialog>`s and the lightbox
+- `index.html`: every section (hero, work, services, about, contact) plus the case-study `<dialog>`s and the lightbox
 - `css/style.css`: design tokens at the top; one file, no framework
-- `js/main.js`: pointer glow on glass, project reveal, dialogs, lightbox, 4-step brief builder. `WHATSAPP`, `EMAIL`, `SHEET_ENDPOINT` are set at the top
+- `js/main.js`: phone menu, project reveal, dialogs, lightbox, 4-step brief builder. `WHATSAPP`, `EMAIL`, `SHEET_ENDPOINT` are set at the top
 - `js/viewer.js`: three.js viewers. The hero bike loads immediately; `.mini-canvas` viewers load lazily. Viewers behind an open dialog pause
 - `vendor/three/`: three.js 0.160.0 bundled locally (importmap in `index.html`)
 - `models/`: web-optimised GLB files (meshopt-compressed, textures stripped, painted in code)
 - `apps-script/Code.gs`: optional Google Sheet inbox for briefs
 
 ## Design rules (keep consistent)
-- Brand follows Deepak's Portfolio 2026 PDF. Archivo variable font (self-hosted in `fonts/`). Headlines use `wdth` 118–125, weight 800–900. Body text uses `wdth` 100.
+- Font: Barlow 400/500/600 (self-hosted in `fonts/`, latin + latin-ext), a grotesk drawn from California highway signage. Headlines weight 600; body 400. Avoid AI-default faces (Inter, Instrument Sans, IBM Plex, DM Sans, Space Grotesk, Outfit, Plus Jakarta Sans).
 - Colours: graphite #1A1A1A (matches render backgrounds), studio grey #ECECEA, muted #A6A6A2, hairline #3A3A3A. Signal orange #E2501D is used only for status (availability dot, active step).
 - Project tints: bike #C8312A, Dodge #9C6E43, wheel/Alias #4F6FB0, joystick #2E7F8C.
-- Glassmorphism: `.glass` plus `data-glow` (a highlight follows the pointer). Glass sits over the drifting `.softbox` light field or over renders.
-- Motion: one hero load sequence, a shutter reveal on project media, user-driven 3D. Respect `prefers-reduced-motion`. Don't add fade-ups to every section.
+- Surfaces: `.glass` is now an opaque card (`--surface` plus a 1px `--line` border). No backdrop blur, pointer glow, drifting blobs, coloured halos, pulsing dots or pill wrappers on static text. Buttons and chips use 8px corners. The nav is a full-width bar with a bottom rule.
+- Motion: one hero load sequence, a shutter reveal on project media, user-driven 3D. The polaroid tilt on photography.html is intentional. Respect `prefers-reduced-motion`. Don't add fade-ups to every section.
 - Copy: sentence case, plain verbs, no all-caps eyebrows, no "→" in buttons, British spelling (modelling, visualisation).
 
 ## Content facts
@@ -39,8 +39,9 @@ No build step. ES modules need a server: `python -m http.server 8000`, then open
 - Source assets live on E: under `work\`, `internship works\`, and `portfolio\deepak\New portfolio\` (2026 PDF and PSDs).
 
 ## Open items
-- Waiting for the original files of the Behance photography portfolio to build `photography.html`, then add a Photography nav link and a "See photography" button on the photography service card.
-- If an old `img/photo/` folder exists on disk from an earlier build, delete it; the page no longer uses it.
+- `photography.html` is built from photos cropped out of the Behance slides (`img/photography/<chapter>/`, about 300–600 px wide). Swap in Deepak's original camera files when he sends them.
+- The Behance thank-you slide lists Instagram @deepak.07.jpg and +91 93800 86551; the site uses @deepak_07_official and +91 99662 73444. Confirm which the photography page should use.
+- Vercel: `vercel.json` (clean URLs, security and cache headers, no build step), `.vercelignore`, `404.html`, `robots.txt`. Waiting on the domain: then update og:url/og:image, add a canonical link and `sitemap.xml`.
+- Deploy: the live repo's `main` publishes through `.github/workflows/static.yml`. This folder isn't a git repo; copy it into a clone of the repo (skip `.claude/launch.json`) and push.
 - `files/Deepak-B-Resume.pdf` still shows the old LinkedIn URL (deepak6007). Replace it with an updated résumé.
 - Optional: deploy `apps-script/Code.gs` and set `SHEET_ENDPOINT`.
-- Push to GitHub (replaces the old site; history keeps it).

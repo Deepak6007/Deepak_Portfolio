@@ -29,6 +29,42 @@
         ],
         "createdAt": "2026-10-31T19:17:24.502Z",
         "reason": "CLAUDE.md design rules: drifting softbox light field and tinted glows are the site's lighting system"
+      },
+      {
+        "rule": "broken-image",
+        "value": "*",
+        "files": [
+          "index.html"
+        ],
+        "createdAt": "2026-11-01T13:27:20.980Z",
+        "reason": "Claude: #lb-img in the lightbox has no src until js/main.js sets it when a study card is opened"
+      },
+      {
+        "rule": "broken-image",
+        "value": "*",
+        "files": [
+          "photography.html"
+        ],
+        "createdAt": "2026-11-01T13:27:21.465Z",
+        "reason": "Claude: #lb-img in the lightbox has no src until js/main.js sets it when a photo is opened"
+      },
+      {
+        "rule": "pulsing-dot",
+        "value": "*",
+        "files": [
+          "404.html"
+        ],
+        "createdAt": "2026-11-01T13:27:21.931Z",
+        "reason": "CLAUDE.md design rules: the availability dot is a sanctioned status indicator; the rule comes from the shared style.css"
+      },
+      {
+        "rule": "radial-halo",
+        "value": "*",
+        "files": [
+          "404.html"
+        ],
+        "createdAt": "2026-11-01T13:27:22.415Z",
+        "reason": "CLAUDE.md design rules: drifting softbox light field is the site's lighting system"
       }
     ]
   }

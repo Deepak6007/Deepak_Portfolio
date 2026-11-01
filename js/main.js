@@ -1,4 +1,4 @@
-/* Site behaviour: glass glow, reveals, case studies, lightbox, brief builder. */
+/* Site behaviour: menu, reveals, case studies, lightbox, brief builder. */
 (function () {
   'use strict';
 
@@ -15,15 +15,6 @@
   var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
 
   var y = $('#year'); if (y) y.textContent = new Date().getFullYear();
-
-  // ---- Light on glass follows the pointer ----
-  $$('[data-glow]').forEach(function (el) {
-    el.addEventListener('pointermove', function (e) {
-      var r = el.getBoundingClientRect();
-      el.style.setProperty('--mx', (e.clientX - r.left) + 'px');
-      el.style.setProperty('--my', (e.clientY - r.top) + 'px');
-    });
-  });
 
   // ---- Project reveal (studio shutter) ----
   var revealEls = $$('[data-reveal]');
@@ -154,7 +145,10 @@
   function show(i) {
     cur = i;
     steps.forEach(function (s, k) { s.hidden = k !== i; s.classList.toggle('is-on', k === i); });
-    dots.forEach(function (d, k) { d.classList.toggle('is-on', k === i); d.classList.toggle('is-done', k < i); });
+    dots.forEach(function (d, k) {
+      d.classList.toggle('is-on', k === i); d.classList.toggle('is-done', k < i);
+      if (k === i) d.setAttribute('aria-current', 'step'); else d.removeAttribute('aria-current');
+    });
     prev.hidden = i === 0;
     next.hidden = i === steps.length - 1;
     next.textContent = i === steps.length - 2 ? 'Review brief' : 'Continue';
@@ -164,10 +158,18 @@
       $('#send-wa').href = 'https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(t);
       $('#send-mail').href = 'mailto:' + EMAIL + '?subject=' + encodeURIComponent('Project brief from ' + val('name')) + '&body=' + encodeURIComponent(t);
     }
-    var focusable = $('input, textarea', steps[i]);
+    var focusable = i === steps.length - 1 ? $('#review-title') : $('input, textarea', steps[i]);
     if (focusable && i > 0) focusable.focus({ preventScroll: true });
   }
-  function err(i, on) { var e = $('[data-err="' + i + '"]', form); if (e) e.hidden = !on; }
+  // Show or hide a step's error and tie it to that step's fields for screen readers
+  function err(i, on) {
+    var e = $('[data-err="' + i + '"]', form); if (!e) return;
+    e.hidden = !on;
+    $$('input:not([type=radio]), textarea', steps[i]).forEach(function (f) {
+      if (on) { f.setAttribute('aria-invalid', 'true'); f.setAttribute('aria-describedby', e.id); }
+      else { f.removeAttribute('aria-invalid'); f.removeAttribute('aria-describedby'); }
+    });
+  }
 
   next.addEventListener('click', function () {
     if (!valid(cur)) { err(cur, true); return; }
