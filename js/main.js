@@ -45,6 +45,40 @@
     });
   }
 
+  // ---- Scroll rail: a line in the margin that fills as you scroll, with the current section ----
+  var sections = $$('main > section');
+  if (sections.length) {
+    var rail = document.createElement('div');
+    rail.className = 'rail';
+    rail.setAttribute('aria-hidden', 'true');
+    rail.innerHTML = '<span class="rail-fill"></span><span class="rail-head"></span><span class="rail-label"></span>';
+    document.body.appendChild(rail);
+    var label = $('.rail-label', rail);
+    // Short names: a chapter's data-title, else the section id (work -> Work), else its heading
+    var names = sections.map(function (s, i) {
+      if (i === 0) return 'Intro';
+      if (s.dataset.title) return s.dataset.title;
+      if (s.id) return s.id.charAt(0).toUpperCase() + s.id.slice(1);
+      var h = $('h2', s);
+      return h ? h.textContent.trim() : '';
+    });
+    var ticking = false;
+    var updateRail = function () {
+      ticking = false;
+      var max = document.documentElement.scrollHeight - window.innerHeight;
+      var p = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0;
+      rail.style.setProperty('--p', p.toFixed(4));
+      rail.classList.toggle('is-past-half', p > 0.5); // label flips above the dot in the lower half
+      var mid = window.innerHeight * 0.4, cur = 0;
+      sections.forEach(function (s, i) { if (s.getBoundingClientRect().top <= mid) cur = i; });
+      if (label.textContent !== names[cur]) label.textContent = names[cur];
+    };
+    var onScroll = function () { if (!ticking) { ticking = true; requestAnimationFrame(updateRail); } };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    updateRail();
+  }
+
   // ---- Active nav link ----
   var links = $$('.nav-links a');
   if ('IntersectionObserver' in window) {

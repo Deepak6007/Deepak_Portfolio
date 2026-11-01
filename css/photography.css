@@ -79,18 +79,6 @@
 .ph-thanks .hero-actions{justify-content:center;margin-bottom:40px}
 .ph-thanks .direct-list{max-width:900px;margin:0 auto;grid-template-columns:repeat(3,minmax(0,1fr))}
 
-/* ---------- chapter progress ---------- */
-.ch-progress{
-  position:fixed;left:50%;bottom:18px;z-index:40;transform:translate(-50%,140%);
-  display:flex;align-items:center;gap:12px;padding:.5em 1.1em;border-radius:var(--r-sm);
-  font-size:var(--step--1);white-space:nowrap;background:var(--graphite);transition:transform .45s var(--ease);
-}
-.ch-progress.is-on{transform:translate(-50%,0)}
-.ch-num{font-weight:600;}
-.ch-bar{width:72px;height:3px;border-radius:3px;background:rgba(255,255,255,.18);overflow:hidden}
-.ch-bar span{display:block;height:100%;width:10%;background:var(--signal);transition:width .45s var(--ease)}
-.ch-name{color:var(--ink-soft)}
-
 /* ---------- responsive ---------- */
 @media (max-width:960px){
   .ph-cover{grid-template-columns:1fr;min-height:auto;padding-top:120px}
@@ -108,7 +96,4 @@
   .board{gap:22px}
   .board .pol,.board .pol.port,.board .pol.land{width:100%;max-width:360px;margin-top:0;--r:0deg}
   .pol{padding:8px 8px 30px}
-}
-@media (prefers-reduced-motion:reduce){
-  .ch-progress{transition:none}
 }

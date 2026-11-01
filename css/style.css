@@ -89,21 +89,22 @@ p{margin:0}
 }
 .status{display:inline-flex;align-items:center;gap:10px;font-size:var(--step--1);color:var(--studio)}
 .dot{width:8px;height:8px;border-radius:50%;background:var(--signal)}
-.hero-title{font-size:clamp(2.6rem,6.3vw,6.6rem);font-weight:600;line-height:.95;margin:24px 0 24px;letter-spacing:-.02em}
-.hero-title .line{display:block;overflow:hidden}
+.hero-title{font-size:clamp(2.6rem,6.3vw,6.6rem);font-weight:600;line-height:1;margin:24px 0 24px;letter-spacing:-.02em}
+.hero-title .line{display:block;padding-bottom:.06em}
 .hero-lede{max-width:34ch;color:#d4d3cf;font-size:var(--step-1);line-height:1.45}
 .hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
 .worked{margin-top:40px;color:var(--ink-soft);font-size:var(--step--1);max-width:40ch}
 .worked strong{color:var(--studio);font-weight:600}
 
-.hero-stage{position:relative;margin:0;aspect-ratio:1/1;max-height:82svh;width:100%}
+.hero-stage{position:relative;margin:0;aspect-ratio:1/1;max-height:78svh;width:100%;border:1px solid var(--line);border-radius:var(--r-lg);background:#1f2021;overflow:hidden}
+.hero-stage::before{content:"";position:absolute;left:0;right:0;top:70%;height:1px;background:var(--line)}
 .hero-stage canvas,.hero-fallback{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
 .hero-stage canvas{cursor:grab;touch-action:pan-y}
 .hero-stage canvas:active{cursor:grabbing}
 .hero-fallback{opacity:0;transition:opacity .6s}
 .hero-stage.no-3d .hero-fallback{opacity:1}
 .hero-stage.no-3d canvas{display:none}
-.stage-cap{position:absolute;left:0;bottom:0;display:flex;gap:14px;align-items:center;font-size:var(--step--1)}
+.stage-cap{position:absolute;left:20px;right:20px;bottom:16px;z-index:1;display:flex;gap:14px;align-items:center;font-size:var(--step--1)}
 .hint{color:var(--ink-soft)}
 
 /* hero load sequence */
@@ -112,7 +113,7 @@ p{margin:0}
 .js .hero-title .line:nth-child(2){animation-delay:.12s}
 .js .hero-lede,.js .hero-actions,.js .worked,.js .status{animation:fade .9s var(--ease) both}
 .js .status{animation-delay:.05s}.js .hero-lede{animation-delay:.3s}.js .hero-actions{animation-delay:.42s}.js .worked{animation-delay:.55s}
-@keyframes rise{from{clip-path:inset(0 0 100% 0);transform:translateY(40%)}to{clip-path:inset(0 0 0 0);transform:none}}
+@keyframes rise{from{clip-path:inset(0 -5% 100% -5%);transform:translateY(40%)}to{clip-path:inset(-20% -5% -30% -5%);transform:none}}
 @keyframes fade{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
 
 /* ---------- sections ---------- */
@@ -354,3 +355,13 @@ p,li,figcaption,dd{text-wrap:pretty}
 .chip span{min-height:44px;display:inline-flex;align-items:center}
 .field input[aria-invalid="true"],.field textarea[aria-invalid="true"]{border-color:#ff9b77}
 .review-title:focus{outline:none}
+
+/* ---------- scroll rail ---------- */
+.rail{--p:0;position:fixed;top:84px;bottom:28px;left:max(8px,calc((100vw - var(--max)) / 2 + var(--gutter) / 2));width:1px;background:var(--line);z-index:40;pointer-events:none}
+.rail-fill{position:absolute;inset:0;background:var(--studio);transform-origin:top;transform:scaleY(var(--p))}
+.rail-head{position:absolute;left:-3px;top:calc(var(--p) * 100%);width:7px;height:7px;margin-top:-3.5px;border-radius:50%;background:var(--studio)}
+/* name reads bottom-to-top along the line, below the dot, then above it in the lower half */
+.rail-label{position:absolute;right:8px;top:calc(var(--p) * 100% + 10px);writing-mode:vertical-rl;transform:rotate(180deg);font-size:12px;line-height:1;letter-spacing:.02em;color:var(--ink-soft);white-space:nowrap}
+.rail.is-past-half .rail-label{top:auto;bottom:calc((1 - var(--p)) * 100% + 10px)}
+@media (max-width:960px){.rail-label{display:none}}
+@media (max-width:560px){.rail{left:6px;top:72px}}
