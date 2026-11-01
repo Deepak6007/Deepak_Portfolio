@@ -4,6 +4,7 @@ Run `npm install` once in the project folder for the 3D tools. Run `pip install 
 
 | Task | Command |
 |---|---|
+| Refresh the ?v= tags on CSS and JS links (run before every push) | `node tools/version-assets.mjs` |
 | Compress a GLB (keep 20% of triangles) | `node tools/slim-model.mjs big.glb models/name.glb 0.2` |
 | Inspect a GLB | `node tools/inspect-model.mjs models/name.glb` |
 | Cut out a render or photo | `python tools/cutout.py render.jpg img/studies/name.webp` |

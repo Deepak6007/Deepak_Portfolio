@@ -3,7 +3,8 @@
   "private": true,
   "description": "Deepak Bojjagani portfolio site. Static; no build step. These packages are only for the asset tools in tools/.",
   "scripts": {
-    "preview": "python -m http.server 8000"
+    "preview": "python -m http.server 8000",
+    "version-assets": "node tools/version-assets.mjs"
   },
   "devDependencies": {
     "@gltf-transform/core": "4.1.1",

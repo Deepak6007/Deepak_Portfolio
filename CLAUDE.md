@@ -42,6 +42,7 @@ No build step. ES modules need a server: `python -m http.server 8000`, then open
 - `photography.html` is built from photos cropped out of the Behance slides (`img/photography/<chapter>/`, about 300–600 px wide). Swap in Deepak's original camera files when he sends them.
 - The Behance thank-you slide lists Instagram @deepak.07.jpg and +91 93800 86551; the site uses @deepak_07_official and +91 99662 73444. Confirm which the photography page should use.
 - Vercel: `vercel.json` (clean URLs, security and cache headers, no build step), `.vercelignore`, `404.html`, `robots.txt`. Waiting on the domain: then update og:url/og:image, add a canonical link and `sitemap.xml`.
+- Before every push run `node tools/version-assets.mjs`: it tags CSS/JS links with a content hash (?v=) so browsers fetch changed files at once.
 - Deploy: the live repo's `main` publishes through `.github/workflows/static.yml`. This folder isn't a git repo; copy it into a clone of the repo (skip `.claude/launch.json`) and push.
 - `files/Deepak-B-Resume.pdf` still shows the old LinkedIn URL (deepak6007). Replace it with an updated résumé.
 - Optional: deploy `apps-script/Code.gs` and set `SHEET_ENDPOINT`.
