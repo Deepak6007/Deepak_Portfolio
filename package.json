@@ -1,0 +1,14 @@
+{
+  "name": "deepak-portfolio",
+  "private": true,
+  "description": "Deepak Bojjagani portfolio site. Static; no build step. These packages are only for the asset tools in tools/.",
+  "scripts": {
+    "preview": "python -m http.server 8000"
+  },
+  "devDependencies": {
+    "@gltf-transform/core": "4.1.1",
+    "@gltf-transform/extensions": "4.1.1",
+    "@gltf-transform/functions": "4.1.1",
+    "meshoptimizer": "0.22.0"
+  }
+}

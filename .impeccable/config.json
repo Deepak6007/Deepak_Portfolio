@@ -1,0 +1,35 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "buried-raster",
+        "value": "*",
+        "files": [
+          "index.html"
+        ],
+        "createdAt": "2026-10-31T19:17:22.862Z",
+        "reason": "Claude: hero-fallback image is shown only when WebGL or the 3D model fails (.no-3d), per js/viewer.js"
+      },
+      {
+        "rule": "pulsing-dot",
+        "value": "*",
+        "files": [
+          "index.html"
+        ],
+        "createdAt": "2026-10-31T19:17:23.970Z",
+        "reason": "CLAUDE.md design rules: signal orange availability dot is a sanctioned status indicator"
+      },
+      {
+        "rule": "radial-halo",
+        "value": "*",
+        "files": [
+          "index.html"
+        ],
+        "createdAt": "2026-10-31T19:17:24.502Z",
+        "reason": "CLAUDE.md design rules: drifting softbox light field and tinted glows are the site's lighting system"
+      }
+    ]
+  }
+}

@@ -1,2127 +1,487 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#09090b">
-    <title>Bojjagani Deepak — Designer</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
-    <style>
-        /* BASE */
-        
-        *,
-        *::before,
-        *::after {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0
-        }
-        
-        html {
-            scroll-behavior: smooth;
-            -webkit-text-size-adjust: 100%;
-            text-size-adjust: 100%
-        }
-        
-        body {
-            background: #09090b;
-            color: #edebe6;
-            font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-            font-size: 16px;
-            line-height: 1.7;
-            overflow-x: hidden;
-            -webkit-font-smoothing: antialiased
-        }
-        
-        a {
-            color: inherit;
-            text-decoration: none;
-            -webkit-tap-highlight-color: transparent
-        }
-        
-        button {
-            font-family: inherit;
-            -webkit-tap-highlight-color: transparent
-        }
-        
-        input,
-        select,
-        textarea {
-            font-family: 'DM Sans', -apple-system, sans-serif
-        }
-        /* VARIABLES */
-        
-         :root {
-            --bg: #09090b;
-            --surf: #101014;
-            --card: #0e0e12;
-            --bdr: #1f1f28;
-            --acc: #e8622a;
-            --adim: rgba(232, 98, 42, 0.11);
-            --aglow: rgba(232, 98, 42, 0.2);
-            --txt: #edebe6;
-            --muted: #6a6875;
-            --rad: 14px;
-            --p: 20px;
-        }
-        /* LAYOUT */
-        
-        .wrap {
-            max-width: 1080px;
-            margin: 0 auto;
-            padding: 0 var(--p)
-        }
-        
-        .section {
-            padding: 72px var(--p);
-            max-width: 1080px;
-            margin: 0 auto
-        }
-        
-        .surf {
-            background: var(--surf)
-        }
-        /* TYPE */
-        
-        .tag {
-            display: inline-block;
-            font-size: 11px;
-            font-weight: 500;
-            letter-spacing: .13em;
-            text-transform: uppercase;
-            color: var(--acc);
-            margin-bottom: 8px
-        }
-        
-        .h2 {
-            font-family: 'Syne', sans-serif;
-            font-size: clamp(1.65rem, 5vw, 2.55rem);
-            font-weight: 800;
-            letter-spacing: -.03em;
-            line-height: 1.1
-        }
-        
-        .grey {
-            color: var(--muted);
-            font-size: 14px;
-            line-height: 1.8;
-            margin-top: 8px
-        }
-        /* ── NAV ─────────────────────────────── */
-        
-        #topnav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 200;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 13px var(--p);
-            background: #09090b;
-            border-bottom: 1px solid var(--bdr)
-        }
-        
-        .nlogo {
-            font-family: 'Syne', sans-serif;
-            font-weight: 800;
-            font-size: 18px;
-            color: var(--txt)
-        }
-        
-        .nlogo em {
-            color: var(--acc);
-            font-style: normal
-        }
-        
-        .nlinks {
-            display: flex;
-            gap: 26px;
-            list-style: none
-        }
-        
-        .nlinks a {
-            color: var(--muted);
-            font-size: 13px;
-            font-weight: 500;
-            transition: color .2s
-        }
-        
-        .nlinks a:hover {
-            color: var(--txt)
-        }
-        
-        .nright {
-            display: flex;
-            align-items: center;
-            gap: 12px
-        }
-        
-        .nhire {
-            padding: 8px 18px;
-            background: var(--acc);
-            color: #fff;
-            border-radius: 7px;
-            font-weight: 700;
-            font-size: 13px
-        }
-        
-        .hambtn {
-            display: none;
-            flex-direction: column;
-            gap: 5px;
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 4px
-        }
-        
-        .hambtn span {
-            display: block;
-            width: 22px;
-            height: 2px;
-            background: var(--txt);
-            border-radius: 2px;
-            transition: all .3s
-        }
-        /* Mobile menu */
-        
-        #mobnav {
-            display: none;
-            position: fixed;
-            top: 56px;
-            left: 0;
-            right: 0;
-            z-index: 199;
-            background: #09090b;
-            border-bottom: 1px solid var(--bdr);
-            flex-direction: column;
-            padding: 14px var(--p) 18px
-        }
-        
-        #mobnav.open {
-            display: flex
-        }
-        
-        #mobnav a {
-            padding: 12px 4px;
-            font-size: 16px;
-            font-weight: 500;
-            color: var(--txt);
-            border-bottom: 1px solid var(--bdr)
-        }
-        
-        #mobnav a:last-child {
-            border-bottom: none
-        }
-        /* ── HERO ─────────────────────────────── */
-        
-        #hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            padding: 108px var(--p) 60px;
-            position: relative;
-            overflow: hidden
-        }
-        
-        .hero-wrap {
-            max-width: 1080px;
-            margin: 0 auto;
-            width: 100%;
-            display: flex;
-            align-items: center;
-            gap: 40px
-        }
-        
-        .hleft {
-            flex: 1;
-            min-width: 0
-        }
-        
-        .hright {
-            width: 320px;
-            flex-shrink: 0
-        }
-        
-        .apill {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 6px 14px;
-            border-radius: 99px;
-            border: 1px solid rgba(232, 98, 42, .28);
-            background: rgba(232, 98, 42, .07);
-            font-size: 10px;
-            font-weight: 700;
-            color: var(--acc);
-            letter-spacing: .08em;
-            text-transform: uppercase;
-            margin-bottom: 20px
-        }
-        
-        .dot {
-            width: 7px;
-            height: 7px;
-            border-radius: 50%;
-            background: var(--acc);
-            flex-shrink: 0;
-            animation: blink 2s infinite;
-            -webkit-animation: blink 2s infinite
-        }
-        
-        @keyframes blink {
-            0%,
-            100% {
-                opacity: 1
-            }
-            50% {
-                opacity: .3
-            }
-        }
-        
-        @-webkit-keyframes blink {
-            0%,
-            100% {
-                opacity: 1
-            }
-            50% {
-                opacity: .3
-            }
-        }
-        
-        .hname {
-            font-family: 'Syne', sans-serif;
-            font-size: clamp(2.7rem, 9vw, 5rem);
-            font-weight: 800;
-            line-height: .95;
-            letter-spacing: -.04em;
-            margin-bottom: 12px
-        }
-        
-        .hname .fn {
-            color: var(--acc);
-            display: block
-        }
-        
-        .hname .ln {
-            color: var(--txt);
-            display: block
-        }
-        
-        .hrole {
-            font-size: 11px;
-            font-weight: 700;
-            color: var(--muted);
-            letter-spacing: .07em;
-            text-transform: uppercase;
-            margin-bottom: 14px
-        }
-        
-        .hrole b {
-            color: var(--txt)
-        }
-        
-        .hbio {
-            font-size: 15px;
-            color: var(--muted);
-            line-height: 1.85;
-            margin-bottom: 24px;
-            max-width: 420px
-        }
-        
-        .hbio strong {
-            color: var(--txt);
-            font-weight: 500
-        }
-        
-        .ctarow {
-            display: flex;
-            gap: 11px;
-            flex-wrap: wrap
-        }
-        
-        .bfill {
-            padding: 13px 24px;
-            background: var(--acc);
-            color: #fff;
-            font-weight: 700;
-            font-size: 14px;
-            border-radius: 9px;
-            box-shadow: 0 4px 20px var(--aglow)
-        }
-        
-        .bghost {
-            padding: 13px 24px;
-            border: 1px solid var(--bdr);
-            color: var(--txt);
-            font-weight: 500;
-            font-size: 14px;
-            border-radius: 9px
-        }
-        
-        .hstats {
-            display: flex;
-            gap: 26px;
-            flex-wrap: wrap;
-            margin-top: 30px;
-            padding-top: 22px;
-            border-top: 1px solid var(--bdr)
-        }
-        
-        .sn {
-            font-family: 'Syne', sans-serif;
-            font-size: 26px;
-            font-weight: 800;
-            line-height: 1;
-            color: var(--txt)
-        }
-        
-        .sn sup {
-            font-size: 13px;
-            color: var(--acc)
-        }
-        
-        .sl {
-            font-size: 11px;
-            color: var(--muted);
-            margin-top: 3px
-        }
-        /* Hero card */
-        
-        .hcard {
-            background: var(--card);
-            border: 1px solid var(--bdr);
-            border-radius: var(--rad);
-            padding: 20px;
-            position: relative;
-            overflow: hidden
-        }
-        
-        .hcard::before {
-            content: '';
-            position: absolute;
-            top: -50px;
-            right: -50px;
-            width: 150px;
-            height: 150px;
-            background: var(--aglow);
-            border-radius: 50%;
-            filter: blur(50px);
-            pointer-events: none
-        }
-        
-        .clbl {
-            font-size: 10px;
-            font-weight: 700;
-            letter-spacing: .13em;
-            text-transform: uppercase;
-            color: var(--muted);
-            margin-bottom: 9px
-        }
-        
-        .tpills {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-            margin-bottom: 14px
-        }
-        
-        .tp {
-            padding: 5px 9px;
-            background: var(--surf);
-            border: 1px solid var(--bdr);
-            border-radius: 5px;
-            font-size: 11px;
-            color: var(--txt)
-        }
-        
-        .hdiv {
-            height: 1px;
-            background: var(--bdr);
-            margin: 12px 0
-        }
-        
-        .erow {
-            display: flex;
-            gap: 9px;
-            margin-bottom: 8px;
-            align-items: flex-start
-        }
-        
-        .erow:last-of-type {
-            margin-bottom: 0
-        }
-        
-        .edot {
-            width: 7px;
-            height: 7px;
-            border-radius: 50%;
-            background: var(--acc);
-            flex-shrink: 0;
-            margin-top: 5px
-        }
-        
-        .etxt {
-            font-size: 12px;
-            color: var(--muted);
-            line-height: 1.5
-        }
-        
-        .etxt strong {
-            color: var(--txt);
-            font-weight: 600
-        }
-        
-        .hcfoot {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 12px
-        }
-        
-        .hloc {
-            font-size: 11px;
-            color: var(--muted)
-        }
-        
-        .hrem {
-            font-size: 10px;
-            font-weight: 700;
-            color: var(--acc);
-            background: var(--adim);
-            padding: 3px 8px;
-            border-radius: 4px
-        }
-        /* blobs */
-        
-        .blob {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(90px);
-            pointer-events: none;
-            z-index: 0
-        }
-        
-        .b1 {
-            width: 440px;
-            height: 440px;
-            background: rgba(232, 98, 42, .05);
-            top: -100px;
-            right: -130px
-        }
-        
-        .b2 {
-            width: 300px;
-            height: 300px;
-            background: rgba(232, 98, 42, .04);
-            bottom: -50px;
-            left: 8%
-        }
-        /* ── ABOUT ─────────────────────────────── */
-        
-        .agrid {
-            display: flex;
-            gap: 48px;
-            align-items: flex-start
-        }
-        
-        .aleft {
-            flex: 1.1;
-            min-width: 0
-        }
-        
-        .aright {
-            flex: .9;
-            min-width: 0
-        }
-        
-        .ap {
-            font-size: 14px;
-            color: var(--muted);
-            line-height: 1.85;
-            margin-top: 10px
-        }
-        
-        .ap strong {
-            color: var(--txt);
-            font-weight: 500
-        }
-        
-        .vprops {
-            display: flex;
-            flex-direction: column;
-            gap: 9px;
-            margin-top: 18px
-        }
-        
-        .vp {
-            display: flex;
-            gap: 11px;
-            align-items: flex-start;
-            padding: 13px 15px;
-            background: var(--card);
-            border: 1px solid var(--bdr);
-            border-radius: 10px
-        }
-        
-        .vico {
-            width: 30px;
-            height: 30px;
-            border-radius: 7px;
-            background: var(--adim);
-            border: 1px solid rgba(232, 98, 42, .17);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 14px;
-            flex-shrink: 0
-        }
-        
-        .vt {
-            font-weight: 600;
-            font-size: 13px;
-            margin-bottom: 2px
-        }
-        
-        .vd {
-            font-size: 12px;
-            color: var(--muted);
-            line-height: 1.5
-        }
-        
-        .sblock {
-            margin-top: 20px
-        }
-        
-        .sg {
-            margin-bottom: 14px
-        }
-        
-        .sgl {
-            font-size: 10px;
-            font-weight: 700;
-            letter-spacing: .1em;
-            text-transform: uppercase;
-            color: var(--muted);
-            margin-bottom: 6px
-        }
-        
-        .sgp {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 5px
-        }
-        
-        .chip {
-            padding: 5px 9px;
-            background: var(--surf);
-            border: 1px solid var(--bdr);
-            border-radius: 5px;
-            font-size: 12px;
-            color: var(--txt)
-        }
-        
-        .estack {
-            display: flex;
-            flex-direction: column;
-            gap: 9px
-        }
-        
-        .eitem {
-            display: flex;
-            gap: 11px;
-            align-items: flex-start;
-            padding: 13px 15px;
-            background: var(--card);
-            border: 1px solid var(--bdr);
-            border-radius: 11px
-        }
-        
-        .eico {
-            width: 34px;
-            height: 34px;
-            border-radius: 8px;
-            background: var(--adim);
-            border: 1px solid rgba(232, 98, 42, .17);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 14px;
-            flex-shrink: 0
-        }
-        
-        .euni {
-            font-weight: 600;
-            font-size: 13px;
-            line-height: 1.3
-        }
-        
-        .edeg {
-            font-size: 12px;
-            color: var(--muted);
-            margin-top: 3px
-        }
-        
-        .eyr {
-            font-size: 11px;
-            color: var(--acc);
-            font-weight: 700;
-            margin-top: 3px
-        }
-        
-        .plinks {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            margin-top: 9px
-        }
-        
-        .plink {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 12px 14px;
-            background: var(--card);
-            border: 1px solid var(--bdr);
-            border-radius: 9px;
-            font-size: 13px;
-            font-weight: 500
-        }
-        
-        .pico {
-            color: var(--acc);
-            font-style: normal;
-            font-weight: 900;
-            width: 16px;
-            text-align: center
-        }
-        
-        .parr {
-            margin-left: auto;
-            font-size: 11px;
-            color: var(--muted)
-        }
-        
-        .abox {
-            margin-top: 14px;
-            padding: 15px;
-            background: var(--card);
-            border: 1px solid var(--bdr);
-            border-radius: 11px
-        }
-        
-        .ar {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 13px;
-            color: var(--muted);
-            margin-bottom: 7px
-        }
-        
-        .ar:last-child {
-            margin-bottom: 0
-        }
-        
-        .ar em {
-            color: var(--acc);
-            font-style: normal
-        }
-        /* mobile tools */
-        
-        #mtools {
-            display: none;
-            margin-top: 14px;
-            padding: 15px;
-            background: var(--card);
-            border: 1px solid var(--bdr);
-            border-radius: 11px
-        }
-        /* ── EXPERIENCE ─────────────────────────── */
-        
-        .tline {
-            display: flex;
-            flex-direction: column;
-            gap: 13px;
-            margin-top: 26px
-        }
-        
-        .expc {
-            background: var(--card);
-            border: 1px solid var(--bdr);
-            border-radius: var(--rad);
-            padding: 20px;
-            display: flex;
-            gap: 15px
-        }
-        
-        .obadge {
-            width: 48px;
-            height: 48px;
-            border-radius: 11px;
-            background: var(--adim);
-            border: 1px solid rgba(232, 98, 42, .17);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'Syne', sans-serif;
-            font-weight: 800;
-            font-size: 9px;
-            color: var(--acc);
-            text-align: center;
-            line-height: 1.3;
-            flex-shrink: 0
-        }
-        
-        .ebody {
-            flex: 1;
-            min-width: 0
-        }
-        
-        .etop {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            flex-wrap: wrap;
-            gap: 6px;
-            margin-bottom: 4px
-        }
-        
-        .etitle {
-            font-family: 'Syne', sans-serif;
-            font-size: 15px;
-            font-weight: 700
-        }
-        
-        .eper {
-            font-size: 11px;
-            font-weight: 700;
-            color: var(--acc);
-            background: var(--adim);
-            padding: 3px 8px;
-            border-radius: 4px;
-            white-space: nowrap
-        }
-        
-        .eorg {
-            font-size: 12px;
-            color: var(--muted);
-            margin-bottom: 11px
-        }
-        
-        .buls {
-            display: flex;
-            flex-direction: column;
-            gap: 5px
-        }
-        
-        .bul {
-            display: flex;
-            gap: 8px;
-            font-size: 13px;
-            color: var(--muted);
-            align-items: flex-start;
-            line-height: 1.6
-        }
-        
-        .bul::before {
-            content: '▸';
-            color: var(--acc);
-            flex-shrink: 0;
-            font-size: 10px;
-            margin-top: 3px
-        }
-        /* ── PROJECTS ─────────────────────────── */
-        
-        .pgrid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 13px;
-            margin-top: 26px
-        }
-        
-        .pcard {
-            background: var(--card);
-            border: 1px solid var(--bdr);
-            border-radius: var(--rad);
-            overflow: hidden;
-            flex: 1 1 260px;
-            min-width: 260px
-        }
-        
-        .pthumb {
-            height: 150px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'Syne', sans-serif;
-            font-size: 28px;
-            font-weight: 800;
-            letter-spacing: -.04em
-        }
-        
-        .pbody {
-            padding: 15px
-        }
-        
-        .ptags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 5px;
-            margin-bottom: 7px
-        }
-        
-        .ptag {
-            padding: 3px 7px;
-            background: var(--adim);
-            color: var(--acc);
-            border-radius: 4px;
-            font-size: 10px;
-            font-weight: 700;
-            letter-spacing: .05em
-        }
-        
-        .ptitle {
-            font-family: 'Syne', sans-serif;
-            font-size: 15px;
-            font-weight: 700;
-            margin-bottom: 5px
-        }
-        
-        .pdesc {
-            font-size: 12px;
-            color: var(--muted);
-            margin-bottom: 11px;
-            line-height: 1.65
-        }
-        
-        .plink2 {
-            font-size: 12px;
-            font-weight: 700;
-            color: var(--acc)
-        }
-        /* ── REVIEWS ─────────────────────────── */
-        
-        .rgrid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 13px;
-            margin-top: 26px
-        }
-        
-        .rcard {
-            background: var(--card);
-            border: 1px solid var(--bdr);
-            border-radius: var(--rad);
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 11px;
-            flex: 1 1 240px;
-            min-width: 240px
-        }
-        
-        .stars {
-            color: #f59e0b;
-            font-size: 13px
-        }
-        
-        .rq {
-            font-size: 13px;
-            color: var(--muted);
-            font-style: italic;
-            line-height: 1.75;
-            flex: 1
-        }
-        
-        .rfoot {
-            display: flex;
-            align-items: center;
-            gap: 9px;
-            padding-top: 11px;
-            border-top: 1px solid var(--bdr)
-        }
-        
-        .ava {
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--acc), #ff9a5c);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: 11px;
-            color: #fff;
-            flex-shrink: 0
-        }
-        
-        .rn {
-            font-weight: 600;
-            font-size: 13px
-        }
-        
-        .ro {
-            font-size: 11px;
-            color: var(--muted)
-        }
-        /* ── CONTACT ─────────────────────────── */
-        
-        .ctop {
-            text-align: center;
-            margin-bottom: 40px
-        }
-        
-        .ctop .h2 {
-            max-width: 520px;
-            margin: 0 auto 10px
-        }
-        
-        .ctop .grey {
-            max-width: 440px;
-            margin: 0 auto;
-            text-align: center
-        }
-        /* Quick-reach cards */
-        
-        .qcards {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 11px;
-            margin-bottom: 32px
-        }
-        
-        .qcard {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            flex: 1 1 190px;
-            min-width: 0;
-            padding: 15px;
-            background: var(--card);
-            border: 1px solid var(--bdr);
-            border-radius: 12px;
-            color: var(--txt)
-        }
-        
-        .qcard:active {
-            background: var(--surf)
-        }
-        
-        .qico {
-            width: 38px;
-            height: 38px;
-            border-radius: 9px;
-            background: var(--adim);
-            border: 1px solid rgba(232, 98, 42, .17);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 16px;
-            flex-shrink: 0;
-            color: var(--acc)
-        }
-        
-        .qlbl {
-            font-size: 10px;
-            color: var(--muted);
-            letter-spacing: .06em;
-            text-transform: uppercase;
-            margin-bottom: 2px
-        }
-        
-        .qval {
-            font-size: 13px;
-            font-weight: 600;
-            word-break: break-all;
-            line-height: 1.3
-        }
-        /* OR divider */
-        
-        .ordiv {
-            display: flex;
-            align-items: center;
-            gap: 13px;
-            margin-bottom: 28px
-        }
-        
-        .ordiv div {
-            height: 1px;
-            background: var(--bdr);
-            flex: 1
-        }
-        
-        .ordiv span {
-            font-size: 11px;
-            color: var(--muted);
-            white-space: nowrap;
-            letter-spacing: .09em;
-            text-transform: uppercase
-        }
-        /* Form card */
-        
-        .fcard {
-            background: var(--card);
-            border: 1px solid var(--bdr);
-            border-radius: var(--rad);
-            padding: 26px;
-            max-width: 660px;
-            margin: 0 auto
-        }
-        
-        .ftitle {
-            font-family: 'Syne', sans-serif;
-            font-size: 16px;
-            font-weight: 800;
-            color: var(--txt);
-            margin-bottom: 18px
-        }
-        /* Connecting overlay */
-        
-        #cOverlay {
-            display: none;
-            text-align: center;
-            padding: 36px 20px
-        }
-        
-        .spinner {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            border: 3px solid var(--bdr);
-            border-top-color: var(--acc);
-            margin: 0 auto 18px;
-            animation: spin .85s linear infinite;
-            -webkit-animation: spin .85s linear infinite
-        }
-        
-        @keyframes spin {
-            to {
-                transform: rotate(360deg)
-            }
-        }
-        
-        @-webkit-keyframes spin {
-            to {
-                -webkit-transform: rotate(360deg)
-            }
-        }
-        
-        #cOverlay h3 {
-            font-family: 'Syne', sans-serif;
-            font-size: 19px;
-            font-weight: 800;
-            color: var(--txt);
-            margin-bottom: 7px
-        }
-        
-        #cOverlay p {
-            font-size: 13px;
-            color: var(--muted)
-        }
-        /* Success */
-        
-        #cSuccess {
-            display: none;
-            text-align: center;
-            padding: 36px 20px
-        }
-        
-        .scheck {
-            width: 54px;
-            height: 54px;
-            border-radius: 50%;
-            background: rgba(26, 122, 80, .12);
-            border: 2px solid #1a7a50;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 22px;
-            margin: 0 auto 14px
-        }
-        
-        #cSuccess h3 {
-            font-family: 'Syne', sans-serif;
-            font-size: 19px;
-            font-weight: 800;
-            color: var(--txt);
-            margin-bottom: 7px
-        }
-        
-        #cSuccess p {
-            font-size: 13px;
-            color: var(--muted);
-            margin-bottom: 18px
-        }
-        
-        .rbtn {
-            padding: 10px 22px;
-            background: var(--surf);
-            border: 1px solid var(--bdr);
-            color: var(--txt);
-            border-radius: 7px;
-            font-size: 13px;
-            cursor: pointer
-        }
-        /* Form fields */
-        
-        #fFields {
-            display: flex;
-            flex-direction: column;
-            gap: 13px
-        }
-        
-        .frow2 {
-            display: flex;
-            gap: 12px
-        }
-        
-        .fg {
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-            flex: 1
-        }
-        
-        .fg label {
-            font-size: 11px;
-            color: var(--muted);
-            font-weight: 600;
-            letter-spacing: .04em;
-            text-transform: uppercase
-        }
-        
-        .fg input,
-        .fg select,
-        .fg textarea {
-            background: var(--surf);
-            border: 1px solid var(--bdr);
-            color: var(--txt);
-            border-radius: 8px;
-            padding: 12px 14px;
-            font-size: 16px;
-            /* 16px stops iOS zoom */
-            outline: none;
-            width: 100%;
-            -webkit-appearance: none;
-            appearance: none;
-        }
-        
-        .fg input:focus,
-        .fg select:focus,
-        .fg textarea:focus {
-            border-color: var(--acc)
-        }
-        
-        .fg textarea {
-            resize: vertical;
-            min-height: 110px
-        }
-        
-        .fg select {
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%236a6875'/%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            background-position: right 12px center;
-            padding-right: 30px;
-        }
-        
-        .fg select option {
-            background: #0e0e12;
-            color: #edebe6
-        }
-        
-        #ferr {
-            display: none;
-            font-size: 12px;
-            color: #f87171;
-            padding: 8px 12px;
-            background: rgba(248, 113, 113, .08);
-            border: 1px solid rgba(248, 113, 113, .2);
-            border-radius: 6px
-        }
-        
-        .sbtn {
-            width: 100%;
-            padding: 14px;
-            background: var(--acc);
-            color: #fff;
-            font-family: 'Syne', sans-serif;
-            font-weight: 800;
-            font-size: 15px;
-            border: none;
-            border-radius: 9px;
-            cursor: pointer;
-            box-shadow: 0 4px 20px var(--aglow);
-            letter-spacing: .02em
-        }
-        /* ── FOOTER ─────────────────────────── */
-        
-        footer {
-            background: var(--bg);
-            padding: 20px var(--p);
-            border-top: 1px solid var(--bdr);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 9px
-        }
-        
-        .flogo {
-            font-family: 'Syne', sans-serif;
-            font-weight: 800;
-            font-size: 16px
-        }
-        
-        .flogo em {
-            color: var(--acc);
-            font-style: normal
-        }
-        
-        footer p {
-            font-size: 12px;
-            color: var(--muted)
-        }
-        /* ── REVEAL ─────────────────────────── */
-        
-        .rv {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity .55s ease, transform .55s ease;
-            -webkit-transition: opacity .55s ease, -webkit-transform .55s ease
-        }
-        
-        .rv.on {
-            opacity: 1;
-            transform: none;
-            -webkit-transform: none
-        }
-        /* ── RESPONSIVE TABLET ── */
-        
-        @media(max-width:820px) {
-             :root {
-                --p: 18px
-            }
-            .nlinks {
-                display: none
-            }
-            .hambtn {
-                display: flex
-            }
-            .hero-wrap {
-                flex-direction: column
-            }
-            .hright {
-                display: none
-            }
-            #mtools {
-                display: block
-            }
-            .agrid {
-                flex-direction: column;
-                gap: 28px
-            }
-            .expc {
-                flex-direction: column
-            }
-            .obadge {
-                display: none
-            }
-            footer {
-                flex-direction: column;
-                text-align: center
-            }
-        }
-        /* ── RESPONSIVE MOBILE ── */
-        
-        @media(max-width:480px) {
-             :root {
-                --p: 16px
-            }
-            .section {
-                padding: 55px var(--p)
-            }
-            #hero {
-                padding: 96px var(--p) 50px;
-                min-height: unset
-            }
-            .hname {
-                font-size: clamp(2.5rem, 11vw, 3.2rem)
-            }
-            .hrole {
-                font-size: 10px
-            }
-            .hbio {
-                font-size: 14px
-            }
-            .ctarow {
-                flex-direction: column
-            }
-            .bfill,
-            .bghost {
-                width: 100%;
-                text-align: center;
-                padding: 13px
-            }
-            .hstats {
-                gap: 18px
-            }
-            .sn {
-                font-size: 22px
-            }
-            .frow2 {
-                flex-direction: column
-            }
-            .pcard {
-                flex: 1 1 100%;
-                min-width: unset
-            }
-            .rcard {
-                flex: 1 1 100%;
-                min-width: unset
-            }
-            .qcard {
-                flex: 1 1 100%;
-                min-width: unset
-            }
-            .h2 {
-                font-size: 1.5rem
-            }
-            .etitle {
-                font-size: 14px
-            }
-            .etop {
-                flex-direction: column;
-                gap: 4px
-            }
-            footer {
-                flex-direction: column;
-                text-align: center
-            }
-            .fcard {
-                padding: 18px
-            }
-        }
-    </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Deepak Bojjagani · Automotive & Industrial Designer</title>
+<meta name="description" content="Deepak Bojjagani is an automotive and industrial designer and product photographer in Bengaluru. 3D modelling and surfacing, renders and product photography for freelance clients.">
+<meta property="og:title" content="Deepak Bojjagani, automotive & industrial designer">
+<meta property="og:description" content="3D modelling and surfacing, renders and product photography. Taking freelance projects.">
+<meta property="og:image" content="https://deepak6007.github.io/Deepak_Portfolio/img/og.jpg">
+<meta property="og:url" content="https://deepak6007.github.io/Deepak_Portfolio/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#1A1A1A">
+<link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/style.css">
+<script type="importmap">
+{ "imports": {
+  "three": "./vendor/three/build/three.module.js",
+  "three/addons/": "./vendor/three/addons/"
+} }
+</script>
 </head>
-
 <body>
+<a class="skip" href="#work">Skip to work</a>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="i-autodesk" viewBox="0 0 24 24"><path d="m.129 20.202 14.7-9.136h7.625c.235 0 .445.188.445.445 0 .21-.092.305-.21.375l-7.222 4.323c-.47.283-.633.845-.633 1.265l-.008 2.725H24V4.362a.561.561 0 0 0-.585-.562h-8.752L0 12.893V20.2h.129z"/></symbol><symbol id="i-blender" viewBox="0 0 24 24"><path d="M12.51 13.214c.046-.8.438-1.506 1.03-2.006a3.424 3.424 0 0 1 2.212-.79c.85 0 1.631.3 2.211.79.592.5.983 1.206 1.028 2.005.045.823-.285 1.586-.865 2.153a3.389 3.389 0 0 1-2.374.938 3.393 3.393 0 0 1-2.376-.938c-.58-.567-.91-1.33-.865-2.152M7.35 14.831c.006.314.106.922.256 1.398a7.372 7.372 0 0 0 1.593 2.757 8.227 8.227 0 0 0 2.787 2.001 8.947 8.947 0 0 0 3.66.76 8.964 8.964 0 0 0 3.657-.772 8.285 8.285 0 0 0 2.785-2.01 7.428 7.428 0 0 0 1.592-2.762 6.964 6.964 0 0 0 .25-3.074 7.123 7.123 0 0 0-1.016-2.779 7.764 7.764 0 0 0-1.852-2.043h.002L13.566 2.55l-.02-.015c-.492-.378-1.319-.376-1.86.002-.547.382-.609 1.015-.123 1.415l-.001.001 3.126 2.543-9.53.01h-.013c-.788.001-1.545.518-1.695 1.172-.154.665.38 1.217 1.2 1.22V8.9l4.83-.01-8.62 6.617-.034.025c-.813.622-1.075 1.658-.563 2.313.52.667 1.625.668 2.447.004L7.414 14s-.069.52-.063.831zm12.09 1.741c-.97.988-2.326 1.548-3.795 1.55-1.47.004-2.827-.552-3.797-1.538a4.51 4.51 0 0 1-1.036-1.622 4.282 4.282 0 0 1 .282-3.519 4.702 4.702 0 0 1 1.153-1.371c.942-.768 2.141-1.183 3.396-1.185 1.256-.002 2.455.41 3.398 1.175.48.391.87.854 1.152 1.367a4.28 4.28 0 0 1 .522 1.706 4.236 4.236 0 0 1-.239 1.811 4.54 4.54 0 0 1-1.035 1.626"/></symbol><symbol id="i-ps" viewBox="0 0 24 24"><path d="M9.85 8.42c-.37-.15-.77-.21-1.18-.2-.26 0-.49 0-.68.01-.2-.01-.34 0-.41.01v3.36c.14.01.27.02.39.02h.53c.39 0 .78-.06 1.15-.18.32-.09.6-.28.82-.53.21-.25.31-.59.31-1.03.01-.31-.07-.62-.23-.89-.17-.26-.41-.46-.7-.57zM19.75.3H4.25C1.9.3 0 2.2 0 4.55v14.899c0 2.35 1.9 4.25 4.25 4.25h15.5c2.35 0 4.25-1.9 4.25-4.25V4.55C24 2.2 22.1.3 19.75.3zm-7.391 11.65c-.399.56-.959.98-1.609 1.22-.68.25-1.43.34-2.25.34-.24 0-.4 0-.5-.01s-.24-.01-.43-.01v3.209c.01.07-.04.131-.11.141H5.52c-.08 0-.12-.041-.12-.131V6.42c0-.07.03-.11.1-.11.17 0 .33 0 .56-.01.24-.01.49-.01.76-.02s.56-.01.87-.02c.31-.01.61-.01.91-.01.82 0 1.5.1 2.06.31.5.17.96.45 1.34.82.32.32.57.71.73 1.14.149.42.229.85.229 1.3.001.86-.199 1.57-.6 2.13zm7.091 3.89c-.28.4-.671.709-1.12.891-.49.209-1.09.318-1.811.318-.459 0-.91-.039-1.359-.129-.35-.061-.7-.17-1.02-.32-.07-.039-.121-.109-.111-.189v-1.74c0-.029.011-.07.041-.09.029-.02.06-.01.09.01.39.23.8.391 1.24.49.379.1.779.15 1.18.15.38 0 .65-.051.83-.141.16-.07.27-.24.27-.42 0-.141-.08-.27-.24-.4-.16-.129-.489-.279-.979-.471-.51-.18-.979-.42-1.42-.719-.31-.221-.569-.51-.761-.85-.159-.32-.239-.67-.229-1.021 0-.43.12-.84.341-1.21.25-.4.619-.72 1.049-.92.469-.239 1.059-.349 1.769-.349.41 0 .83.03 1.24.09.3.04.59.12.86.23.039.01.08.05.1.09.01.04.02.08.02.12v1.63c0 .04-.02.08-.05.1-.09.02-.14.02-.18 0-.3-.16-.62-.27-.96-.34-.37-.08-.74-.13-1.12-.13-.2-.01-.41.02-.601.07-.129.03-.24.1-.31.2-.05.08-.08.18-.08.27s.04.18.101.26c.09.11.209.2.34.27.229.12.47.23.709.33.541.18 1.061.43 1.541.73.33.209.6.49.789.83.16.318.24.67.23 1.029.011.471-.129.94-.389 1.331z"/></symbol><symbol id="i-ai" viewBox="0 0 24 24"><path d="M10.53 10.73c-.1-.31-.19-.61-.29-.92-.1-.31-.19-.6-.27-.89-.08-.28-.15-.54-.22-.78h-.02c-.09.43-.2.86-.34 1.29-.15.48-.3.98-.46 1.48-.14.51-.29.98-.44 1.4h2.54c-.06-.211-.14-.46-.23-.721-.09-.269-.18-.559-.27-.859zM19.75.3H4.25C1.9.3 0 2.2 0 4.55v14.9c0 2.35 1.9 4.25 4.25 4.25h15.5c2.35 0 4.25-1.9 4.25-4.25V4.55C24 2.2 22.1.3 19.75.3zM14.7 16.83h-2.091c-.069.01-.139-.04-.159-.11l-.82-2.38H7.91l-.76 2.35c-.02.09-.1.15-.19.141H5.08c-.11 0-.14-.061-.11-.18L8.19 7.38c.03-.1.06-.21.1-.33.04-.21.06-.43.06-.65-.01-.05.03-.1.08-.11h2.59c.08 0 .12.03.13.08l3.65 10.3c.03.109 0 .16-.1.16zm3.4-.15c0 .11-.039.16-.129.16H16.01c-.1 0-.15-.061-.15-.16v-7.7c0-.1.041-.14.131-.14h1.98c.09 0 .129.05.129.14v7.7zm-.209-9.03c-.231.24-.571.37-.911.35-.33.01-.65-.12-.891-.35-.23-.25-.35-.58-.34-.92-.01-.34.12-.66.359-.89.242-.23.562-.35.892-.35.391 0 .689.12.91.35.22.24.34.56.33.89.01.34-.11.67-.349.92z"/></symbol></svg>
 
-    <!-- NAV -->
-    <nav id="topnav">
-        <a class="nlogo" href="#">Deepak<em>.</em></a>
-        <ul class="nlinks">
-            <li><a href="#about">About</a></li>
-            <li><a href="#experience">Experience</a></li>
-            <li><a href="#projects">Work</a></li>
-            <li><a href="#reviews">Reviews</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-        <div class="nright">
-            <a href="#contact" class="nhire">Hire Me</a>
-            <button class="hambtn" id="hbtn" onclick="toggleNav()" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
-        </div>
-    </nav>
-    <div id="mobnav">
-        <a href="#about" onclick="closeNav()">About</a>
-        <a href="#experience" onclick="closeNav()">Experience</a>
-        <a href="#projects" onclick="closeNav()">Work</a>
-        <a href="#reviews" onclick="closeNav()">Reviews</a>
-        <a href="#contact" onclick="closeNav()">Contact</a>
+<div class="studio" aria-hidden="true">
+  <span class="softbox s1"></span><span class="softbox s2"></span><span class="softbox s3"></span>
+</div>
+
+<header class="nav glass" data-glow>
+  <a class="nav-name" href="#top">Deepak Bojjagani</a>
+  <nav aria-label="Main">
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#work">Work</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="photography.html">Photography</a></li>
+      <li class="nav-contact"><a href="#contact">Start a project</a></li>
+    </ul>
+  </nav>
+  <div class="nav-end">
+    <a class="btn btn-solid btn-sm" href="#contact">Start a project</a>
+    <button class="nav-toggle btn btn-line btn-sm" type="button" aria-expanded="false" aria-controls="nav-links">Menu</button>
+  </div>
+</header>
+
+<main id="top">
+  <!-- HERO -->
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero-copy">
+      <p class="status glass" data-glow><span class="dot"></span>Available for freelance projects</p>
+      <h1 id="hero-title" class="hero-title"><span class="line">Deepak</span><span class="line">Bojjagani</span></h1>
+      <p class="hero-lede">Automotive and industrial designer, and product photographer. I shape vehicles and products in Alias, Fusion&nbsp;360 and Blender, and photograph the things people sell.</p>
+      <div class="hero-actions">
+        <a class="btn btn-solid" href="#contact">Start a project</a>
+        <a class="btn btn-glass glass" data-glow href="#work">See the work</a>
+      </div>
+      <p class="worked">Previously at <strong>Maruti Suzuki</strong>, <strong>Heed Jetboards</strong> and <strong>AS Dream Studio</strong></p>
+    </div>
+    <figure class="hero-stage">
+      <div class="lightbar" aria-hidden="true"></div>
+      <img class="hero-fallback" src="img/work/bike-cover.webp" alt="Hero Sports Bike concept, surfaced 3D model" width="1220" height="1000">
+      <canvas id="hero-canvas" aria-label="Interactive 3D model of the Hero Sports Bike. Drag to rotate."></canvas>
+      <figcaption class="stage-cap glass" data-glow>
+        <span>Hero Sports Bike, 3D model</span>
+        <span class="hint">Drag to rotate</span>
+      </figcaption>
+    </figure>
+  </section>
+
+  <!-- WORK -->
+  <section id="work" class="section work" aria-labelledby="work-title">
+    <div class="section-head">
+      <h2 id="work-title">Selected work</h2>
+      <p>Four projects, from first sketch to surfaced model, render and physical prototype.</p>
     </div>
 
-    <!-- HERO -->
-    <section id="hero">
-        <div class="blob b1"></div>
-        <div class="blob b2"></div>
-        <div class="hero-wrap">
+    <article class="project" style="--tint:#C8312A" data-reveal>
+      <button class="project-media" style="--ar:1800/812" data-open="cs-bike" aria-label="Open case study: Hero Sports Bike">
+        <img src="img/work/bike-renders.webp" alt="Two renders of the red Hero Sports Bike on a dark background" loading="lazy" width="1800" height="812">
+      </button>
+      <div class="project-card glass" data-glow>
+        <p class="project-num">01</p>
+        <h3>Hero Sports Bike</h3>
+        <p>A sports-bike concept taken from quick form doodles to a surfaced 3D model, then 3D-printed, finished and painted as a scale model.</p>
+        <dl class="meta">
+          <div><dt>Type</dt><dd>Concept vehicle, physical prototype</dd></div>
+          <div><dt>Tools</dt><dd>Blender, Alias, 3D printing</dd></div>
+          <div><dt>Year</dt><dd>2024</dd></div>
+        </dl>
+        <button class="btn btn-line" data-open="cs-bike">Open case study</button>
+      </div>
+    </article>
 
-            <div class="hleft">
-                <div class="apill"><span class="dot"></span>Open to Freelance &amp; Full-time</div>
-                <h1 class="hname"><span class="fn">Bojjagani</span><span class="ln">Deepak</span></h1>
-                <p class="hrole"><b>Industrial Designer</b> &nbsp;&#183;&nbsp; UI/UX Specialist &nbsp;&#183;&nbsp; 3D Visualizer</p>
-                <p class="hbio">I design <strong>products that function beautifully</strong> and <strong>experiences that feel effortless</strong> &mdash; from automotive surfaces at Maruti Suzuki to digital interfaces that put the user first.</p>
-                <div class="ctarow">
-                    <a href="#projects" class="bfill">View My Work</a>
-                    <a href="https://behance.net/deepak6007" target="_blank" rel="noopener" class="bghost">Behance &#8599;</a>
-                </div>
-                <div class="hstats">
-                    <div>
-                        <div class="sn">3<sup>+</sup></div>
-                        <div class="sl">Years of Practice</div>
-                    </div>
-                    <div>
-                        <div class="sn">3</div>
-                        <div class="sl">Industry Internships</div>
-                    </div>
-                    <div>
-                        <div class="sn">ID</div>
-                        <div class="sl">Industrial Designer Experience</div>
-                    </div>
-                </div>
-            </div>
+    <article class="project flip" style="--tint:#9C6E43" data-reveal>
+      <button class="project-media" style="--ar:1765/1097" data-open="cs-dodge" aria-label="Open case study: Dodge Challenger">
+        <img src="img/work/dodge-context.webp" alt="Black Dodge Challenger model rendered in a car park at dusk" loading="lazy" width="1765" height="1097">
+      </button>
+      <div class="project-card glass" data-glow>
+        <p class="project-num">02</p>
+        <h3>Dodge Challenger</h3>
+        <p>Rebuilding the Challenger’s body from blueprint references, checking surface quality with zebra analysis, then presenting it in studio and environment renders.</p>
+        <dl class="meta">
+          <div><dt>Type</dt><dd>Automotive surface modelling</dd></div>
+          <div><dt>Tools</dt><dd>Autodesk Alias, KeyShot</dd></div>
+          <div><dt>Year</dt><dd>2024</dd></div>
+        </dl>
+        <button class="btn btn-line" data-open="cs-dodge">Open case study</button>
+      </div>
+    </article>
 
-            <div class="hright">
-                <div class="hcard">
-                    <div class="clbl">Software &amp; Tools</div>
-                    <div class="tpills">
-                        <span class="tp">Autodesk Alias</span><span class="tp">Fusion 360</span><span class="tp">Blender</span>
-                        <span class="tp">KeyShot</span><span class="tp">Figma</span><span class="tp">Illustrator</span>
-                        <span class="tp">Photoshop</span><span class="tp">Sketchbook</span><span class="tp">CorelDRAW</span>
-                    </div>
-                    <div class="hdiv"></div>
-                    <div class="clbl">Experience</div>
-                    <div class="erow">
-                        <div class="edot"></div>
-                        <div class="etxt"><strong>Maruti Suzuki</strong> &mdash; Alloy &amp; Steel Wheel Design</div>
-                    </div>
-                    <div class="erow">
-                        <div class="edot"></div>
-                        <div class="etxt"><strong>Heed Jetboards</strong> &mdash; Industrial Designer</div>
-                    </div>
-                    <div class="erow">
-                        <div class="edot"></div>
-                        <div class="etxt"><strong>AS Dream Studio</strong> &mdash; Visual Design &amp; Photography</div>
-                    </div>
-                    <div class="hdiv"></div>
-                    <div class="hcfoot"><span class="hloc">&#128205; Bangalore, Karnataka</span><span class="hrem">Remote-Ready</span></div>
-                </div>
-            </div>
+    <article class="project" style="--tint:#4F6FB0" data-reveal>
+      <div class="project-media is-3d">
+        <canvas class="mini-canvas" data-model="models/wheel.glb" data-distance="1.1" data-color="#50545b" data-metal="0.85" data-rough="0.28" aria-label="Interactive 3D model of the alloy wheel concept. Drag to rotate."></canvas>
+        <span class="drag-hint glass">Drag to rotate</span>
+      </div>
+      <div class="project-card glass" data-glow>
+        <p class="project-num">03</p>
+        <h3>Alloy wheel concept</h3>
+        <p>A turbine-spoke wheel that started from a Pinterest reference. I developed it into a full 3D model with Class-A surfaces in Autodesk Alias, then rendered it with carbon-finish spokes and a red brake caliper.</p>
+        <dl class="meta">
+          <div><dt>Type</dt><dd>Concept design, Class-A surfacing</dd></div>
+          <div><dt>Tools</dt><dd>Autodesk Alias, KeyShot</dd></div>
+          <div><dt>Year</dt><dd>2024</dd></div>
+        </dl>
+        <button class="btn btn-line" data-open="cs-wheel">Open case study</button>
+      </div>
+    </article>
 
+    <article class="project flip" style="--tint:#2E7F8C" data-reveal>
+      <div class="project-media is-3d">
+        <canvas class="mini-canvas" data-model="models/joystick.glb" data-color="#2a2d31" aria-label="Interactive 3D model of the jetboard joystick controller. Drag to rotate."></canvas>
+        <span class="drag-hint glass">Drag to rotate</span>
+      </div>
+      <div class="project-card glass" data-glow>
+        <p class="project-num">04</p>
+        <h3>Jetboard joystick controller</h3>
+        <p>A hand controller for an electric jetboard, designed at Heed Jetboards. Sketched for grip and thumb reach, then modelled in Fusion&nbsp;360 for a waterproof, one-handed build.</p>
+        <dl class="meta">
+          <div><dt>Client</dt><dd>Heed Jetboards, Mysuru</dd></div>
+          <div><dt>Tools</dt><dd>Fusion 360, Blender</dd></div>
+          <div><dt>Year</dt><dd>2025</dd></div>
+        </dl>
+        <button class="btn btn-line" data-open="cs-joystick">Open case study</button>
+      </div>
+    </article>
+
+    <div class="studies" data-reveal>
+      <div class="studies-head">
+        <h3>More studies</h3>
+        <p>Surfacing practice, product models and sketches. Select a card to see the full board.</p>
+      </div>
+      <div class="study-grid">
+        <button class="study glass" data-glow style="--tint:#4F6FB0" data-lightbox="img/work/alias-forms.webp" data-caption="Form studies surfaced in Autodesk Alias, checked with zebra stripes">
+          <span class="tools-used"><span class="tool-chip"><svg aria-hidden="true"><use href="#i-autodesk"/></svg>Alias</span></span>
+          <span class="study-title">Alias form studies</span>
+          <span class="study-text">Crisp feature lines blended into soft volumes.</span>
+          <img class="cut c-main" src="img/studies/alias-form.webp" alt="Blue surfaced form study" loading="lazy">
+        </button>
+        <button class="study glass" data-glow style="--tint:#C8312A" data-lightbox="img/work/alias-products.webp" data-caption="Consumer products modelled and rendered as Alias surfacing practice">
+          <span class="tools-used"><span class="tool-chip"><svg aria-hidden="true"><use href="#i-autodesk"/></svg>Alias</span><span class="tool-chip">KeyShot</span></span>
+          <span class="study-title">Alias product models</span>
+          <span class="study-text">A camera and a smartwatch, surfaced and rendered.</span>
+          <img class="cut c-main" src="img/studies/camera.webp" alt="Camera model" loading="lazy">
+          <img class="cut c-side" src="img/studies/watch.webp" alt="Smartwatch model" loading="lazy">
+        </button>
+        <button class="study glass" data-glow style="--tint:#9C6E43" data-lightbox="img/work/fusion360.webp" data-caption="Solid and surface models of everyday products in Fusion 360">
+          <span class="tools-used"><span class="tool-chip"><svg aria-hidden="true"><use href="#i-autodesk"/></svg>Fusion 360</span></span>
+          <span class="study-title">Fusion 360 products</span>
+          <span class="study-text">A coil-over shock, a steering wheel and everyday products.</span>
+          <img class="cut c-main c-tall" src="img/studies/shock.webp" alt="Coil-over shock absorber model" loading="lazy">
+          <img class="cut c-side c-tall" src="img/studies/lamp.webp" alt="Product model" loading="lazy">
+        </button>
+        <button class="study glass" data-glow style="--tint:#6E7B8C" data-lightbox="img/work/sketching.webp" data-caption="Product sketches and perspective studies, by hand and in SketchBook">
+          <span class="tools-used"><span class="tool-chip"><svg aria-hidden="true"><use href="#i-autodesk"/></svg>SketchBook</span><span class="tool-chip">Pen and paper</span></span>
+          <span class="study-title">Sketching</span>
+          <span class="study-text">Perspective studies and product renders.</span>
+          <img class="cut c-main c-speaker" src="img/studies/speaker.webp" alt="Product rendering made in SketchBook" loading="lazy">
+          <img class="cut c-lines" src="img/studies/car-lines.webp" alt="Car perspective line sketch" loading="lazy">
+        </button>
+        <button class="study study-wide glass" data-glow style="--tint:#B8862E" data-lightbox="img/work/posters.webp" data-caption="Posters built from 3D scenes in Blender">
+          <span class="tools-used"><span class="tool-chip"><svg aria-hidden="true"><use href="#i-blender"/></svg>Blender</span><span class="tool-chip"><svg aria-hidden="true"><use href="#i-ps"/></svg>Photoshop</span><span class="tool-chip"><svg aria-hidden="true"><use href="#i-ai"/></svg>Illustrator</span></span>
+          <span class="study-title">3D scene posters</span>
+          <span class="study-text">Car scenes lit in Blender and finished as posters.</span>
+          <img class="cut c-poster" src="img/work/posters.webp" alt="Posters made from Blender car scenes" loading="lazy">
+        </button>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- SERVICES -->
+  <section id="services" class="section services" aria-labelledby="services-title">
+    <div class="section-head">
+      <h2 id="services-title">What you can hire me for</h2>
+      <p>Each project is quoted after a short brief. Send one below and you’ll get a reply with scope, timeline and price.</p>
+    </div>
+    <ul class="service-list">
+      <li class="service glass" data-glow style="--tint:#C8312A">
+        <h3>3D modelling and surfacing</h3>
+        <p>Clean, continuous surfaces in Autodesk Alias and solid models in Fusion&nbsp;360, built from your sketch, blueprint or reference photos.</p>
+        <p class="gets"><span>You get</span> Alias wire, STEP, IGES, OBJ or STL files, ready to render, review or 3D print.</p>
+        <a class="btn btn-line" href="#contact" data-service="3D modelling and surfacing">Brief this service</a>
+      </li>
+      <li class="service glass" data-glow style="--tint:#4F6FB0">
+        <h3>Renders and visualisation</h3>
+        <p>Studio and in-context renders in KeyShot and Blender, plus turntables and short product animations for launches and pitches.</p>
+        <p class="gets"><span>You get</span> High-resolution stills, 360° turntables and short animations sized for web and social.</p>
+        <a class="btn btn-line" href="#contact" data-service="Renders and visualisation">Brief this service</a>
+      </li>
+      <li class="service glass" data-glow style="--tint:#9C6E43">
+        <h3>Product photography and visuals</h3>
+        <p>Product, jewellery, food and portrait shoots on a Canon EOS 90D, edited for your store, catalogue and social feeds.</p>
+        <p class="gets"><span>You get</span> Edited images, white-background catalogue sets and social crops.</p>
+        <div class="svc-actions">
+          <a class="btn btn-line" href="#contact" data-service="Product photography and visuals">Brief this service</a>
+          <a class="btn btn-glass glass" data-glow href="photography.html">See photography</a>
         </div>
-    </section>
+      </li>
+    </ul>
+  </section>
 
-    <!-- ABOUT -->
-    <section id="about">
-        <div class="section">
-            <div class="agrid">
+  <!-- ABOUT + EXPERIENCE + SKILLS -->
+  <section id="about" class="section about" aria-labelledby="about-title">
+    <div class="about-grid">
+      <figure class="portrait">
+        <img src="img/work/portrait.webp" alt="Portrait of Deepak Bojjagani in a maroon checked shirt, low-key studio light" loading="lazy" width="851" height="1280">
+      </figure>
+      <div class="about-copy">
+        <p class="hello glass" data-glow><img src="img/memoji.webp" alt="" width="56" height="56" loading="lazy">Hi, I’m Deepak</p>
+        <h2 id="about-title">About</h2>
+        <p class="about-lede">I’m Deepak, an industrial and product designer from M.&nbsp;S. Ramaiah University of Applied Sciences, focused on automotive form and digital surface modelling.</p>
+        <p>At Maruti Suzuki I worked on alloy and steel wheel design. I build surfaces in Autodesk Alias, Fusion&nbsp;360 and Blender, and take ideas from sketch to render to physical prototype. Photography came first: years of lighting products taught me how a surface catches light, and that’s what I check every model against.</p>
+        <p class="about-links">
+          <a class="btn btn-glass glass" data-glow href="files/Deepak-B-Resume.pdf" download>Download résumé (PDF)</a>
+        </p>
+      </div>
+    </div>
 
-                <div class="aleft rv">
-                    <div class="tag">About Me</div>
-                    <h2 class="h2">Design is Problem-Solving.<br>I Take It Personally.</h2>
-                    <p class="ap">I'm Deepak &mdash; an Industrial &amp; Product Designer completing my Bachelor of Art &amp; Design at MS Ramaiah University. My work bridges <strong>physical product design</strong> and <strong>UI/UX design</strong>, applying human-centered
-                        thinking to both.</p>
-                    <p class="ap" style="margin-top:9px">From designing alloy wheel covers at Maruti Suzuki to ergonomic controllers at Heed Jetboards &mdash; I move concepts from sketch to production-ready proposal.</p>
-                    <div class="vprops">
-                        <div class="vp">
-                            <div class="vico">&#127950;</div>
-                            <div>
-                                <div class="vt">Automotive-Grade Surfacing</div>
-                                <div class="vd">A-Class surfacing and zebra analysis at OEM standards.</div>
-                            </div>
-                        </div>
-                        <div class="vp">
-                            <div class="vico">&#128187;</div>
-                            <div>
-                                <div class="vt">UI/UX with a Designer's Eye</div>
-                                <div class="vd">Wireframes and prototypes guided by visual hierarchy and ergonomics.</div>
-                            </div>
-                        </div>
-                        <div class="vp">
-                            <div class="vico">&#128230;</div>
-                            <div>
-                                <div class="vt">End-to-End Design Thinking</div>
-                                <div class="vd">From ideation and sketching to 3D modeling and presentation-ready renders.</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="sblock">
-                        <div class="sg">
-                            <div class="sgl">UI / UX Design</div>
-                            <div class="sgp"><span class="chip">User Interface Design</span><span class="chip">UX Research</span><span class="chip">Wireframing</span><span class="chip">Prototyping</span><span class="chip">Figma</span><span class="chip">User-Centered Design</span></div>
-                        </div>
-                        <div class="sg">
-                            <div class="sgl">Industrial &amp; Product Design</div>
-                            <div class="sgp"><span class="chip">A-Class Surfacing</span><span class="chip">Automotive Exterior</span><span class="chip">Concept Ideation</span><span class="chip">Product Form Dev.</span><span class="chip">DFM (Basic)</span></div>
-                        </div>
-                        <div class="sg">
-                            <div class="sgl">Visualization</div>
-                            <div class="sgp"><span class="chip">Digital Sketching</span><span class="chip">KeyShot Rendering</span><span class="chip">3D Printing</span><span class="chip">Photography</span><span class="chip">Visual Storytelling</span></div>
-                        </div>
-                    </div>
-                </div>
+    <div class="xp-grid">
+      <div>
+        <h3 class="sub">Experience</h3>
+        <ol class="timeline">
+          <li>
+            <p class="when">May – Sep 2025</p>
+            <h4>Maruti Suzuki India Ltd.</h4>
+            <p class="role">Design intern, alloy and steel wheels</p><p class="where">Gurugram</p>
+            <ul>
+              <li>Designed 16-inch and 17-inch wheel covers for passenger vehicles</li>
+              <li>Developed alloy and steel wheel concepts through design reviews</li>
+              <li>Turned concepts into production-oriented proposals</li>
+            </ul>
+          </li>
+          <li>
+            <p class="when">Mar 2025</p>
+            <h4>Heed Jetboards</h4>
+            <p class="role">Industrial designer</p><p class="where">Mysuru</p>
+            <ul>
+              <li>Sketched and modelled the jetboard joystick controller in Fusion 360</li>
+              <li>Designed and animated the jet-drive propeller mechanism</li>
+              <li>Contributed to a life jacket for jetboard riders</li>
+            </ul>
+          </li>
+          <li>
+            <p class="when">Jun – Jul 2024</p>
+            <h4>AS Dream Studio</h4>
+            <p class="role">Photography intern</p><p class="where">Bengaluru</p>
+            <ul>
+              <li>Assisted commercial shoots: lighting, framing and composition</li>
+              <li>Shot and edited behind-the-scenes photos and video</li>
+              <li>Designed posters and banners for studio clients</li>
+            </ul>
+          </li>
+          <li>
+            <p class="when">2021 – 2025</p>
+            <h4>M. S. Ramaiah University of Applied Sciences</h4>
+            <p class="role">Bachelor of Art & Design, Industrial & Product Design</p><p class="where">Bengaluru</p>
+          </li>
+        </ol>
+      </div>
+      <div>
+        <h3 class="sub">Tools</h3>
+        <ul class="tools">
+          <li class="glass" data-glow><strong>Autodesk Alias</strong><span>Automotive and Class-A style surfacing</span></li>
+          <li class="glass" data-glow><strong>Fusion 360</strong><span>Product and mechanical modelling</span></li>
+          <li class="glass" data-glow><strong>Blender</strong><span>Modelling, scenes and animation</span></li>
+          <li class="glass" data-glow><strong>KeyShot</strong><span>Studio and environment renders</span></li>
+          <li class="glass" data-glow><strong>Photoshop and Illustrator</strong><span>Retouching, layouts and posters</span></li>
+          <li class="glass" data-glow><strong>SketchBook</strong><span>Digital sketching and concept roughs</span></li>
+        </ul>
+        <h3 class="sub">Skills</h3>
+        <ul class="skills">
+          <li>Automotive exterior design</li><li>A-Class surfacing</li><li>Product form development</li><li>Concept sketching</li><li>Zebra and wireframe analysis</li><li>Rendering and visualisation</li><li>3D printing and prototyping</li><li>Product photography</li><li>Lighting and retouching</li>
+        </ul>
+      </div>
+    </div>
+  </section>
 
-                <div class="aright rv">
-                    <div class="tag">Education</div>
-                    <div class="estack">
-                        <div class="eitem">
-                            <div class="eico">&#127891;</div>
-                            <div>
-                                <div class="euni">MS Ramaiah University of Applied Sciences</div>
-                                <div class="edeg">B.Art &amp; Design &mdash; Industrial and Product Design</div>
-                                <div class="eyr">Aug 2021 &ndash; Dec 2025 &nbsp;&#183;&nbsp; Bangalore</div>
-                            </div>
-                        </div>
-                        <div class="eitem">
-                            <div class="eico">&#128218;</div>
-                            <div>
-                                <div class="euni">SRI Bhavishya Jr College</div>
-                                <div class="edeg">Higher Secondary &mdash; MPC</div>
-                                <div class="eyr">Jun 2019 &ndash; Mar 2021 &nbsp;&#183;&nbsp; Vijayawada</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div style="margin-top:18px">
-                        <div class="tag">Profiles</div>
-                        <div class="plinks">
-                            <a href="https://behance.net/deepak6007" target="_blank" rel="noopener" class="plink"><i class="pico">&#9674;</i>behance.net/deepak6007<span class="parr">&#8599;</span></a>
-                            <a href="https://www.linkedin.com/in/deepak6007" target="_blank" rel="noopener" class="plink"><i class="pico">in</i>linkedin.com/in/deepak6007<span class="parr">&#8599;</span></a>
-                        </div>
-                    </div>
-                    <div class="abox">
-                        <div class="tag" style="margin-bottom:8px">Available For</div>
-                        <div class="ar"><em>&#10003;</em>Freelance design projects</div>
-                        <div class="ar"><em>&#10003;</em>Full-time design roles</div>
-                        <div class="ar"><em>&#10003;</em>Remote collaboration</div>
-                        <div class="ar"><em>&#10003;</em>Design consultancy &amp; reviews</div>
-                    </div>
-                    <!-- Mobile tools (hero card hidden on mobile) -->
-                    <div id="mtools">
-                        <div class="tag" style="margin-bottom:8px">Software &amp; Tools</div>
-                        <div class="tpills"><span class="tp">Autodesk Alias</span><span class="tp">Fusion 360</span><span class="tp">Blender</span><span class="tp">KeyShot</span><span class="tp">Figma</span><span class="tp">Illustrator</span><span class="tp">Photoshop</span>
-                            <span class="tp">Sketchbook</span><span class="tp">CorelDRAW</span></div>
-                    </div>
-                </div>
+  <!-- CONTACT -->
+  <section id="contact" class="section contact" aria-labelledby="contact-title">
+    <div class="section-head">
+      <h2 id="contact-title">Start a project</h2>
+      <p>Answer four quick questions and send the brief on WhatsApp or by email. I reply within a day.</p>
+    </div>
 
-            </div>
+    <div class="contact-grid">
+      <form id="brief" class="brief glass" data-glow novalidate>
+        <ol class="steps" aria-label="Brief progress">
+          <li class="is-on">Service</li><li>Project</li><li>Budget</li><li>You</li>
+        </ol>
+
+        <fieldset class="step is-on" data-step="0">
+          <legend>What do you need?</legend>
+          <div class="chips" role="group">
+            <label class="chip"><input type="checkbox" name="service" value="3D modelling and surfacing"><span>3D modelling and surfacing</span></label>
+            <label class="chip"><input type="checkbox" name="service" value="Renders and visualisation"><span>Renders and visualisation</span></label>
+            <label class="chip"><input type="checkbox" name="service" value="Product photography and visuals"><span>Product photography and visuals</span></label>
+            <label class="chip"><input type="checkbox" name="service" value="Something else"><span>Something else</span></label>
+          </div>
+          <p class="err" data-err="0" hidden>Pick at least one service to continue.</p>
+        </fieldset>
+
+        <fieldset class="step" data-step="1" hidden>
+          <legend>Tell me about the project</legend>
+          <label class="field"><span>What are we making?</span>
+            <textarea name="details" rows="4" placeholder="e.g. Renders of our new e-scooter for the launch page, 6 stills and a turntable"></textarea></label>
+          <label class="field"><span>Reference links <em>(optional)</em></span>
+            <input type="text" name="refs" placeholder="Drive folder, Pinterest board, product page"></label>
+          <p class="err" data-err="1" hidden>Add a line or two about the project so I can scope it.</p>
+        </fieldset>
+
+        <fieldset class="step" data-step="2" hidden>
+          <legend>Budget and timing</legend>
+          <p class="field-label">Budget</p>
+          <div class="chips" role="radiogroup">
+            <label class="chip"><input type="radio" name="budget" value="Under ₹10,000"><span>Under ₹10k</span></label>
+            <label class="chip"><input type="radio" name="budget" value="₹10,000 – 25,000"><span>₹10k – 25k</span></label>
+            <label class="chip"><input type="radio" name="budget" value="₹25,000 – 50,000"><span>₹25k – 50k</span></label>
+            <label class="chip"><input type="radio" name="budget" value="Above ₹50,000"><span>Above ₹50k</span></label>
+            <label class="chip"><input type="radio" name="budget" value="Not sure yet" checked><span>Not sure yet</span></label>
+          </div>
+          <p class="field-label">When do you need it?</p>
+          <div class="chips" role="radiogroup">
+            <label class="chip"><input type="radio" name="timeline" value="Within a week"><span>Within a week</span></label>
+            <label class="chip"><input type="radio" name="timeline" value="2–4 weeks" checked><span>2–4 weeks</span></label>
+            <label class="chip"><input type="radio" name="timeline" value="1–2 months"><span>1–2 months</span></label>
+            <label class="chip"><input type="radio" name="timeline" value="Flexible"><span>Flexible</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="step" data-step="3" hidden>
+          <legend>How do I reach you?</legend>
+          <label class="field"><span>Your name</span><input type="text" name="name" autocomplete="name"></label>
+          <label class="field"><span>Email or phone</span><input type="text" name="contact" autocomplete="email"></label>
+          <label class="field"><span>Company or brand <em>(optional)</em></span><input type="text" name="company" autocomplete="organization"></label>
+          <p class="err" data-err="3" hidden>Add your name and a valid email or phone number so I can reply.</p>
+        </fieldset>
+
+        <div class="step review" data-step="4" hidden>
+          <p class="review-title">Your brief is ready</p>
+          <pre class="review-text" id="review-text"></pre>
+          <div class="send-row">
+            <a class="btn btn-solid" id="send-wa" href="#" target="_blank" rel="noopener">Send on WhatsApp</a>
+            <a class="btn btn-glass glass" id="send-mail" href="#">Send by email</a>
+            <button type="button" class="btn btn-line" id="copy-brief">Copy brief</button>
+          </div>
+          <p class="sent-note" id="sent-note" role="status"></p>
         </div>
-    </section>
 
-    <!-- EXPERIENCE -->
-    <section id="experience" class="surf">
-        <div class="section">
-            <div class="rv">
-                <div class="tag">Experience</div>
-                <h2 class="h2">Where I've Made an Impact</h2>
-                <p class="grey" style="max-width:460px">Real-world design practice across India's automotive, product, and creative industries.</p>
-            </div>
-            <div class="tline">
-
-                <div class="expc rv">
-                    <div class="obadge">MUL</div>
-                    <div class="ebody">
-                        <div class="etop">
-                            <div class="etitle">Industrial Design Intern &mdash; Alloy &amp; Steel Wheel Design</div>
-                            <div class="eper">May &ndash; Sep 2025</div>
-                        </div>
-                        <div class="eorg">Maruti Suzuki India Limited &nbsp;&#183;&nbsp; Gurugram, Haryana</div>
-                        <div class="buls">
-                            <div class="bul">Designed 16-inch and 17-inch alloy wheel covers for production passenger vehicles</div>
-                            <div class="bul">Developed steel wheel concepts within strict dimensional and manufacturing tolerances</div>
-                            <div class="bul">Refined surface forms aligned with Maruti Suzuki's established automotive design language</div>
-                            <div class="bul">Translated concept sketches into production-oriented proposals for formal design reviews</div>
-                            <div class="bul">Gained exposure to OEM workflows, cross-functional reviews, and feasibility evaluation</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="expc rv">
-                    <div class="obadge">HEED</div>
-                    <div class="ebody">
-                        <div class="etop">
-                            <div class="etitle">Industrial Designer</div>
-                            <div class="eper">March 2025</div>
-                        </div>
-                        <div class="eorg">Heed Jetboards &nbsp;&#183;&nbsp; Mysore, Karnataka</div>
-                        <div class="buls">
-                            <div class="bul">Engineered ergonomic 3D models of jet board joystick controller in Fusion 360</div>
-                            <div class="bul">Produced concept sketches translating user requirements into refined product forms</div>
-                            <div class="bul">Designed and animated the propeller mechanism for stakeholder presentations</div>
-                            <div class="bul">Contributed to life jacket design integrating safety, comfort, and aesthetic coherence</div>
-                            <div class="bul">Delivered surface-refined, presentation-quality visualizations for the full portfolio</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="expc rv">
-                    <div class="obadge">ASDS</div>
-                    <div class="ebody">
-                        <div class="etop">
-                            <div class="etitle">Photography &amp; Visual Design Intern</div>
-                            <div class="eper">Jun &ndash; Jul 2024</div>
-                        </div>
-                        <div class="eorg">AS Dream Studio &nbsp;&#183;&nbsp; Bangalore, Karnataka</div>
-                        <div class="buls">
-                            <div class="bul">Designed client-facing posters and promotional banners applying brand guidelines</div>
-                            <div class="bul">Assisted in commercial photography &mdash; lighting, framing, and compositional direction</div>
-                            <div class="bul">Captured and edited behind-the-scenes content for social media and brand storytelling</div>
-                            <div class="bul">Strengthened post-production skills across Photoshop and video editing workflows</div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
+        <div class="brief-nav">
+          <button type="button" class="btn btn-line" id="prev" hidden>Back</button>
+          <button type="button" class="btn btn-solid" id="next">Continue</button>
         </div>
-    </section>
+      </form>
 
-    <!-- PROJECTS -->
-    <section id="projects">
-        <div class="section">
-            <div class="rv">
-                <div class="tag">Selected Work</div>
-                <h2 class="h2">Services &amp; Expertise</h2>
-                <p class="grey" style="max-width:500px">Four core disciplines — each delivered with professional precision, industry-standard tools, and a strong design process.</p>
-            </div>
+      <aside class="direct">
+        <h3 class="sub">Or reach me directly</h3>
+        <ul class="direct-list">
+          <li><a class="glass" data-glow href="https://wa.me/919966273444" target="_blank" rel="noopener"><strong>WhatsApp</strong><span>+91 99662 73444</span></a></li>
+          <li><a class="glass" data-glow href="mailto:deepak7designer@gmail.com"><strong>Email</strong><span>deepak7designer@gmail.com</span></a></li>
+          <li><a class="glass" data-glow href="https://www.instagram.com/deepak_07_official/" target="_blank" rel="noopener"><strong>Instagram</strong><span>@deepak_07_official</span></a></li>
+          <li><a class="glass" data-glow href="https://www.linkedin.com/in/deepakbojjagani" target="_blank" rel="noopener"><strong>LinkedIn</strong><span>in/deepakbojjagani</span></a></li>
+          <li><a class="glass" data-glow href="https://www.behance.net/deepak6007" target="_blank" rel="noopener"><strong>Behance</strong><span>deepak6007</span></a></li>
+        </ul>
+        <p class="based">Based in Bengaluru, working with clients across India and remotely.</p>
+      </aside>
+    </div>
+  </section>
+</main>
 
-            <!-- Row 1: UI/UX + Digital Modeling -->
-            <div style="display:flex;flex-wrap:wrap;gap:16px;margin-top:28px">
+<footer class="footer">
+  <p>© <span id="year">2026</span> Deepak Bojjagani</p>
+  <p><a href="#top">Back to top</a></p>
+</footer>
 
-                <!-- UI/UX Design -->
-                <div class="pcard rv" style="flex:1 1 300px;min-width:280px;display:flex;flex-direction:column">
-                    <div style="height:10px;background:linear-gradient(90deg,#8b5cf6,#d580ff);border-radius:14px 14px 0 0"></div>
-                    <div class="pbody" style="flex:1;display:flex;flex-direction:column;padding:22px">
-                        <div style="display:flex;align-items:center;gap:14px;margin-bottom:16px">
-                            <div style="width:48px;height:48px;border-radius:12px;background:rgba(139,92,246,0.12);border:1px solid rgba(139,92,246,0.25);display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0">&#128187;</div>
-                            <div>
-                                <div style="font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#8b5cf6;margin-bottom:3px">01 &mdash; Design</div>
-                                <div style="font-family:'Syne',sans-serif;font-size:17px;font-weight:800;color:var(--txt)">UI/UX Design</div>
-                            </div>
-                        </div>
-                        <p style="font-size:13px;color:var(--muted);line-height:1.8;margin-bottom:16px">Creating intuitive digital experiences — from initial wireframes and user flows to high-fidelity prototypes that are tested, refined, and ready for development.</p>
-                        <div style="display:flex;flex-direction:column;gap:7px;margin-bottom:18px;flex:1">
-                            <div style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:2px">Deliverables</div>
-                            <div style="display:flex;gap:6px;align-items:center;font-size:12px;color:var(--muted)"><span style="color:#8b5cf6;font-size:10px">&#9646;</span>Wireframes &amp; User Flows</div>
-                            <div style="display:flex;gap:6px;align-items:center;font-size:12px;color:var(--muted)"><span style="color:#8b5cf6;font-size:10px">&#9646;</span>Interactive Prototypes</div>
-                            <div style="display:flex;gap:6px;align-items:center;font-size:12px;color:var(--muted)"><span style="color:#8b5cf6;font-size:10px">&#9646;</span>UI Screens &amp; Design Systems</div>
-                            <div style="display:flex;gap:6px;align-items:center;font-size:12px;color:var(--muted)"><span style="color:#8b5cf6;font-size:10px">&#9646;</span>UX Research &amp; User Testing</div>
-                        </div>
-                        <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:16px">
-                            <span class="ptag" style="background:rgba(139,92,246,0.1);color:#8b5cf6">Figma</span>
-                            <span class="ptag" style="background:rgba(139,92,246,0.1);color:#8b5cf6">Adobe XD</span>
-                            <span class="ptag" style="background:rgba(139,92,246,0.1);color:#8b5cf6">Prototyping</span>
-                        </div>
-                        <a href="https://behance.net/deepak6007" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:#8b5cf6;text-decoration:none">View Projects &#8599;</a>
-                    </div>
-                </div>
+<!-- CASE STUDIES -->
+<dialog class="case" id="cs-bike" style="--tint:#C8312A" aria-labelledby="cs-bike-t">
+  <div class="case-inner">
+    <header class="case-head">
+      <p class="project-num">01</p>
+      <h2 id="cs-bike-t">Hero Sports Bike</h2>
+      <p>A sports-bike concept taken from quick form doodles to a surfaced 3D model, then 3D-printed, finished and painted as a physical scale model.</p>
+      <button class="close glass" data-close aria-label="Close case study">Close</button>
+    </header>
+    <figure class="case-hero"><img src="img/work/bike-hero.webp" alt="Red Hero Sports Bike render" loading="lazy"></figure>
+    <ol class="process">
+      <li><div class="pt"><h3>Ideation</h3><p>Silhouette doodles and quick colour roughs, narrowed to one split-fairing direction.</p></div><div class="pm"><img src="img/work/bike-ideation.webp" alt="Ideation board with silhouette thumbnails" loading="lazy"></div></li>
+      <li><div class="pt"><h3>Surface modelling</h3><p>Fairing, tank and tail built as separate panels, then joined into one continuous body.</p></div><div class="pm"><img src="img/work/bike-surfacing.webp" alt="Surface modelling stages of the bike" loading="lazy"></div></li>
+      <li><div class="pt"><h3>Wireframe</h3><p>Topology checked from every view before rendering and printing.</p></div><div class="pm"><img src="img/work/bike-wireframe.webp" alt="Wireframe views of the bike" loading="lazy"></div></li>
+      <li><div class="pt"><h3>Renders</h3><p>Gloss red paint against carbon and matte black, lit to show the fairing’s highlight lines.</p></div><div class="pm"><img src="img/work/bike-renders.webp" alt="Two renders of the red bike" loading="lazy"></div></li>
+      <li><div class="pt"><h3>Prototype build</h3><p>Parts 3D-printed, filled, sanded, primed and painted by hand.</p></div><div class="pm"><img src="img/work/bike-prototype.webp" alt="Prototype build photos from printing to paint" loading="lazy"></div></li>
+      <li><div class="pt"><h3>Finished model</h3><p>The painted scale model on display.</p></div><div class="pm"><img src="img/work/bike-model-a.webp" alt="Painted 3D-printed bike scale model" loading="lazy"><div class="pair"><img src="img/work/bike-model-b.webp" alt="Scale model, front three-quarter" loading="lazy"><img src="img/work/bike-model-c.webp" alt="Scale model, side view" loading="lazy"></div></div></li>
+    </ol>
+    <div class="case-cta"><p>Need a concept taken from sketch to model?</p><a class="btn btn-solid" href="#contact" data-close>Start a project</a></div>
+  </div>
+</dialog>
 
-                <!-- Digital Modeling -->
-                <div class="pcard rv" style="flex:1 1 300px;min-width:280px;display:flex;flex-direction:column">
-                    <div style="height:10px;background:linear-gradient(90deg,#059669,#2de0a0);border-radius:14px 14px 0 0"></div>
-                    <div class="pbody" style="flex:1;display:flex;flex-direction:column;padding:22px">
-                        <div style="display:flex;align-items:center;gap:14px;margin-bottom:16px">
-                            <div style="width:48px;height:48px;border-radius:12px;background:rgba(45,224,160,0.1);border:1px solid rgba(45,224,160,0.22);display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0">&#128230;</div>
-                            <div>
-                                <div style="font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#2de0a0;margin-bottom:3px">02 &mdash; 3D</div>
-                                <div style="font-family:'Syne',sans-serif;font-size:17px;font-weight:800;color:var(--txt)">Digital Modeling</div>
-                            </div>
-                        </div>
-                        <p style="font-size:13px;color:var(--muted);line-height:1.8;margin-bottom:16px">Transforming concepts into precise 3D forms — automotive surfaces, product bodies, and mechanism animations built to production-ready standards.</p>
-                        <div style="display:flex;flex-direction:column;gap:7px;margin-bottom:18px;flex:1">
-                            <div style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:2px">Deliverables</div>
-                            <div style="display:flex;gap:6px;align-items:center;font-size:12px;color:var(--muted)"><span style="color:#2de0a0;font-size:10px">&#9646;</span>A-Class Surface Models</div>
-                            <div style="display:flex;gap:6px;align-items:center;font-size:12px;color:var(--muted)"><span style="color:#2de0a0;font-size:10px">&#9646;</span>Photorealistic Renders</div>
-                            <div style="display:flex;gap:6px;align-items:center;font-size:12px;color:var(--muted)"><span style="color:#2de0a0;font-size:10px">&#9646;</span>Product Animations</div>
-                            <div style="display:flex;gap:6px;align-items:center;font-size:12px;color:var(--muted)"><span style="color:#2de0a0;font-size:10px">&#9646;</span>3D Print-Ready Files</div>
-                        </div>
-                        <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:16px">
-                            <span class="ptag" style="background:rgba(45,224,160,0.08);color:#2de0a0">Blender</span>
-                            <span class="ptag" style="background:rgba(45,224,160,0.08);color:#2de0a0">Autodesk Alias</span>
-                            <span class="ptag" style="background:rgba(45,224,160,0.08);color:#2de0a0">KeyShot</span>
-                        </div>
-                        <a href="https://behance.net/deepak6007" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:#2de0a0;text-decoration:none">View Projects &#8599;</a>
-                    </div>
-                </div>
+<dialog class="case" id="cs-dodge" style="--tint:#9C6E43" aria-labelledby="cs-dodge-t">
+  <div class="case-inner">
+    <header class="case-head">
+      <p class="project-num">02</p>
+      <h2 id="cs-dodge-t">Dodge Challenger</h2>
+      <p>A digital modelling study: rebuilding the Challenger’s body from blueprint references in Autodesk Alias, checking surface quality with zebra analysis, and presenting it through studio and environment renders.</p>
+      <button class="close glass" data-close aria-label="Close case study">Close</button>
+    </header>
+    <figure class="case-hero"><img src="img/work/dodge-studio.webp" alt="Matte black Challenger under studio lighting" loading="lazy"></figure>
+    <ol class="process">
+      <li><div class="pt"><h3>Build-up</h3><p>Primary body panels first, then bonnet, bumpers and openings, then detail surfaces.</p></div><div class="pm"><img src="img/work/dodge-buildup.webp" alt="Build-up stages of the car body" loading="lazy"></div></li>
+      <li><div class="pt"><h3>Wireframe and zebra</h3><p>Zebra stripes run across every panel to catch breaks in curvature before rendering.</p></div><div class="pm"><img src="img/work/dodge-zebra.webp" alt="Wireframe and zebra analysis views" loading="lazy"></div></li>
+      <li><div class="pt"><h3>Studio renders</h3><p>Matte black body under studio lighting.</p></div><div class="pm"><img src="img/work/dodge-studio.webp" alt="Studio render of the car" loading="lazy"></div></li>
+      <li><div class="pt"><h3>In context</h3><p>The model lit and placed in real-world scenes.</p></div><div class="pm"><img src="img/work/dodge-context.webp" alt="Car rendered in a car park" loading="lazy"><img src="img/work/dodge-context-b.webp" alt="Close-up of the car's flank" loading="lazy"></div></li>
+    </ol>
+    <div class="case-cta"><p>Need a vehicle or product surfaced from references?</p><a class="btn btn-solid" href="#contact" data-close>Start a project</a></div>
+  </div>
+</dialog>
 
-            </div>
+<dialog class="case" id="cs-wheel" style="--tint:#4F6FB0" aria-labelledby="cs-wheel-t">
+  <div class="case-inner">
+    <header class="case-head">
+      <p class="project-num">03</p>
+      <h2 id="cs-wheel-t">Alloy wheel concept</h2>
+      <p>A concept wheel developed from a Pinterest reference into a full 3D model, with Class-A surfaces built in Autodesk Alias and renders in KeyShot.</p>
+      <button class="close glass" data-close aria-label="Close case study">Close</button>
+    </header>
+    <figure class="case-hero"><img src="img/work/wheel-renders.webp" alt="Renders of the carbon-finish alloy wheel with a red brake caliper" loading="lazy"></figure>
+    <ol class="process">
+      <li><div class="pt"><h3>Concept</h3><p>The direction came from a turbine-style wheel found on Pinterest: blades that sweep from the hub to the rim and read as motion even when the car is parked.</p></div></li>
+      <li><div class="pt"><h3>Class-A surfacing in Alias</h3><p>Each spoke built as a swept blade and joined to the hub and rim with continuous transitions, then checked with zebra stripes until the highlights ran clean.</p></div><div class="pm"><img src="img/work/alias-wheel.webp" alt="Alloy wheel surfacing and zebra analysis in Alias" loading="lazy"></div></li>
+      <li><div class="pt"><h3>Renders</h3><p>Carbon-finish spokes, a machined rim and a red brake caliper behind the blades.</p></div><div class="pm"><img src="img/work/wheel-renders.webp" alt="Alloy wheel renders" loading="lazy"></div></li>
+    </ol>
+    <div class="case-cta"><p>Need a wheel, part or product surfaced?</p><a class="btn btn-solid" href="#contact" data-close>Start a project</a></div>
+  </div>
+</dialog>
 
-            <!-- Row 2: Photography + Graphic Design -->
-            <div style="display:flex;flex-wrap:wrap;gap:16px;margin-top:16px">
+<dialog class="case" id="cs-joystick" style="--tint:#2E7F8C" aria-labelledby="cs-joy-t">
+  <div class="case-inner">
+    <header class="case-head">
+      <p class="project-num">04</p>
+      <h2 id="cs-joy-t">Jetboard joystick controller</h2>
+      <p>Designed at Heed Jetboards, Mysuru, in March 2025: a one-handed throttle controller for an electric jetboard.</p>
+      <button class="close glass" data-close aria-label="Close case study">Close</button>
+    </header>
+    <figure class="case-hero is-3d">
+      <canvas class="mini-canvas" data-model="models/joystick.glb" data-color="#2a2d31" aria-label="Interactive 3D model of the joystick controller. Drag to rotate."></canvas>
+      <span class="drag-hint glass">Drag to rotate</span>
+    </figure>
+    <ol class="process">
+      <li><div class="pt"><h3>Research</h3><p>Studied existing e-foil and jetboard remotes for grip, trigger travel, battery size and waterproofing.</p></div></li>
+      <li><div class="pt"><h3>Sketches</h3><p>Concept sketches focused on how a wet hand holds and squeezes the controller.</p></div></li>
+      <li><div class="pt"><h3>3D model</h3><p>Modelled in Fusion 360 around the battery and PCB, with the trigger placed for thumb and finger reach.</p></div></li>
+      <li><div class="pt"><h3>Beyond the controller</h3><p>At Heed I also designed and animated the jet-drive propeller mechanism, and contributed to a life jacket for riders.</p></div></li>
+    </ol>
+    <div class="case-cta"><p>Need a handheld product designed for real use?</p><a class="btn btn-solid" href="#contact" data-close>Start a project</a></div>
+  </div>
+</dialog>
 
-                <!-- Photography -->
-                <div class="pcard rv" style="flex:1 1 300px;min-width:280px;display:flex;flex-direction:column">
-                    <div style="height:10px;background:linear-gradient(90deg,#d97706,#fbb040);border-radius:14px 14px 0 0"></div>
-                    <div class="pbody" style="flex:1;display:flex;flex-direction:column;padding:22px">
-                        <div style="display:flex;align-items:center;gap:14px;margin-bottom:16px">
-                            <div style="width:48px;height:48px;border-radius:12px;background:rgba(251,176,64,0.1);border:1px solid rgba(251,176,64,0.22);display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0">&#128247;</div>
-                            <div>
-                                <div style="font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#fbb040;margin-bottom:3px">03 &mdash; Visual</div>
-                                <div style="font-family:'Syne',sans-serif;font-size:17px;font-weight:800;color:var(--txt)">Photography</div>
-                            </div>
-                        </div>
-                        <p style="font-size:13px;color:var(--muted);line-height:1.8;margin-bottom:16px">Professional commercial photography and visual storytelling — product shoots, brand campaigns, and BTS content edited for maximum visual impact.</p>
-                        <div style="display:flex;flex-direction:column;gap:7px;margin-bottom:18px;flex:1">
-                            <div style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:2px">Deliverables</div>
-                            <div style="display:flex;gap:6px;align-items:center;font-size:12px;color:var(--muted)"><span style="color:#fbb040;font-size:10px">&#9646;</span>Product &amp; Brand Photography</div>
-                            <div style="display:flex;gap:6px;align-items:center;font-size:12px;color:var(--muted)"><span style="color:#fbb040;font-size:10px">&#9646;</span>Edited High-Res Images</div>
-                            <div style="display:flex;gap:6px;align-items:center;font-size:12px;color:var(--muted)"><span style="color:#fbb040;font-size:10px">&#9646;</span>BTS Video &amp; Reels</div>
-                            <div style="display:flex;gap:6px;align-items:center;font-size:12px;color:var(--muted)"><span style="color:#fbb040;font-size:10px">&#9646;</span>Social Media Visuals</div>
-                        </div>
-                        <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:16px">
-                            <span class="ptag" style="background:rgba(251,176,64,0.08);color:#fbb040">Lightroom</span>
-                            <span class="ptag" style="background:rgba(251,176,64,0.08);color:#fbb040">Photoshop</span>
-                            <span class="ptag" style="background:rgba(251,176,64,0.08);color:#fbb040">Premiere Pro</span>
-                        </div>
-                        <a href="https://behance.net/deepak6007" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:#fbb040;text-decoration:none">View Projects &#8599;</a>
-                    </div>
-                </div>
+<dialog class="lightbox" id="lightbox" aria-label="Image viewer">
+  <figure><img id="lb-img" src="" alt=""><figcaption id="lb-cap"></figcaption></figure>
+  <button class="close glass" data-close aria-label="Close image">Close</button>
+</dialog>
 
-                <!-- Graphic Design -->
-                <div class="pcard rv" style="flex:1 1 300px;min-width:280px;display:flex;flex-direction:column">
-                    <div style="height:10px;background:linear-gradient(90deg,#db2777,#f472b6);border-radius:14px 14px 0 0"></div>
-                    <div class="pbody" style="flex:1;display:flex;flex-direction:column;padding:22px">
-                        <div style="display:flex;align-items:center;gap:14px;margin-bottom:16px">
-                            <div style="width:48px;height:48px;border-radius:12px;background:rgba(244,114,182,0.1);border:1px solid rgba(244,114,182,0.22);display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0">&#127912;</div>
-                            <div>
-                                <div style="font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#f472b6;margin-bottom:3px">04 &mdash; Branding</div>
-                                <div style="font-family:'Syne',sans-serif;font-size:17px;font-weight:800;color:var(--txt)">Graphic Design</div>
-                            </div>
-                        </div>
-                        <p style="font-size:13px;color:var(--muted);line-height:1.8;margin-bottom:16px">Bold, purposeful visual design — posters, brand identities, marketing materials, and print-ready artwork crafted to communicate clearly and leave a lasting impression.</p>
-                        <div style="display:flex;flex-direction:column;gap:7px;margin-bottom:18px;flex:1">
-                            <div style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:2px">Deliverables</div>
-                            <div style="display:flex;gap:6px;align-items:center;font-size:12px;color:var(--muted)"><span style="color:#f472b6;font-size:10px">&#9646;</span>Posters &amp; Banners</div>
-                            <div style="display:flex;gap:6px;align-items:center;font-size:12px;color:var(--muted)"><span style="color:#f472b6;font-size:10px">&#9646;</span>Brand Identity &amp; Logos</div>
-                            <div style="display:flex;gap:6px;align-items:center;font-size:12px;color:var(--muted)"><span style="color:#f472b6;font-size:10px">&#9646;</span>Social Media Graphics</div>
-                            <div style="display:flex;gap:6px;align-items:center;font-size:12px;color:var(--muted)"><span style="color:#f472b6;font-size:10px">&#9646;</span>Print-Ready Artwork</div>
-                        </div>
-                        <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:16px">
-                            <span class="ptag" style="background:rgba(244,114,182,0.08);color:#f472b6">Illustrator</span>
-                            <span class="ptag" style="background:rgba(244,114,182,0.08);color:#f472b6">CorelDRAW</span>
-                            <span class="ptag" style="background:rgba(244,114,182,0.08);color:#f472b6">Photoshop</span>
-                        </div>
-                        <a href="https://behance.net/deepak6007" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:#f472b6;text-decoration:none">View Projects &#8599;</a>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- REVIEWS -->
-    <section id="reviews" class="surf">
-        <div class="section">
-            <div class="rv">
-                <div class="tag">Testimonials</div>
-                <h2 class="h2">Trusted by Those Who've Worked With Me</h2>
-                <p class="grey" style="max-width:440px">Feedback from industry mentors, collaborators, and creative partners.</p>
-            </div>
-            <div class="rgrid">
-                <div class="rcard rv">
-                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                    <p class="rq">Deepak has a sharp design eye and a strong grasp of automotive form language. His attention to surfacing quality and feasibility stood out throughout the internship.</p>
-                    <div class="rfoot">
-                        <div class="ava">MS</div>
-                        <div>
-                            <div class="rn">Design Mentor</div>
-                            <div class="ro">Maruti Suzuki India Ltd.</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="rcard rv">
-                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                    <p class="rq">Excellent problem-solving ability. Deepak understood our ergonomic requirements rapidly and delivered 3D models that were both functionally sound and visually compelling.</p>
-                    <div class="rfoot">
-                        <div class="ava" style="background:linear-gradient(135deg,#0077ff,#00b4d8)">HJ</div>
-                        <div>
-                            <div class="rn">Project Lead</div>
-                            <div class="ro">Heed Jetboards, Mysore</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="rcard rv">
-                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                    <p class="rq">Creative, dependable, and thoroughly professional. Deepak elevated our studio's visual output and handled commercial shoots with genuine confidence.</p>
-                    <div class="rfoot">
-                        <div class="ava" style="background:linear-gradient(135deg,#e8a020,#e84020)">AS</div>
-                        <div>
-                            <div class="rn">Studio Director</div>
-                            <div class="ro">AS Dream Studio, Bangalore</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="rcard rv">
-                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                    <p class="rq">One of the most committed design students I've mentored. His work demonstrated real maturity in surfacing methodology and a strong sense of visual communication.</p>
-                    <div class="rfoot">
-                        <div class="ava" style="background:linear-gradient(135deg,#7c3aed,#db2777)">PF</div>
-                        <div>
-                            <div class="rn">Design Faculty</div>
-                            <div class="ro">MS Ramaiah University</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact">
-        <div class="section">
-
-            <!-- Header -->
-            <div class="ctop rv">
-                <div class="tag">Contact</div>
-                <h2 class="h2">Let's Connect &amp; Create Together</h2>
-                <p class="grey">Have a project in mind? Reach out directly or send a message below. I reply within 24 hours.</p>
-            </div>
-
-            <!-- Quick-reach cards -->
-            <div class="qcards rv">
-                <a href="mailto:Bojjaganideepak@gmail.com" class="qcard">
-                    <div class="qico">&#9993;</div>
-                    <div>
-                        <div class="qlbl">Email</div>
-                        <div class="qval">Bojjaganideepak&#64;gmail.com</div>
-                    </div>
-                </a>
-                <a href="tel:+919380086551" class="qcard">
-                    <div class="qico">&#128222;</div>
-                    <div>
-                        <div class="qlbl">Phone</div>
-                        <div class="qval">+91 93800 86551</div>
-                    </div>
-                </a>
-                <a href="https://www.linkedin.com/in/deepak6007" target="_blank" rel="noopener" class="qcard">
-                    <div class="qico" style="font-weight:900;font-size:14px">in</div>
-                    <div>
-                        <div class="qlbl">LinkedIn</div>
-                        <div class="qval">linkedin.com/in/deepak6007</div>
-                    </div>
-                </a>
-                <a href="https://behance.net/deepak6007" target="_blank" rel="noopener" class="qcard">
-                    <div class="qico">&#9674;</div>
-                    <div>
-                        <div class="qlbl">Behance</div>
-                        <div class="qval">behance.net/deepak6007</div>
-                    </div>
-                </a>
-            </div>
-
-            <!-- OR divider -->
-            <div class="ordiv rv">
-                <div></div><span>Or Send a Message</span>
-                <div></div>
-            </div>
-
-            <!-- Form card -->
-            <div class="fcard rv">
-
-                <!-- State: Connecting -->
-                <div id="cOverlay">
-                    <div class="spinner"></div>
-                    <h3>Contacting to Connect...</h3>
-                    <p>Sending your message to Deepak</p>
-                </div>
-
-                <!-- State: Success -->
-                <div id="cSuccess">
-                    <div class="scheck">&#10003;</div>
-                    <h3>Message Sent!</h3>
-                    <p>Thanks for reaching out. Deepak will reply within 24 hours.</p>
-                    <button class="rbtn" onclick="resetForm()">Send Another Message</button>
-                </div>
-
-                <!-- State: Form -->
-                <div id="fFields">
-                    <div class="ftitle">Send a Message &#9993;</div>
-                    <p style="font-size:11px;color:var(--muted);margin-bottom:4px">All fields marked <span style="color:var(--acc)">*</span> are required.</p>
-                    <div class="frow2">
-                        <div class="fg"><label>Full Name <span style="color:var(--acc)">*</span></label><input type="text" id="fname" placeholder="Your name" autocomplete="name"></div>
-                        <div class="fg"><label>Email <span style="color:var(--acc)">*</span></label><input type="email" id="femail" placeholder="you@email.com" autocomplete="email"></div>
-                    </div>
-                    <div class="fg"><label>Phone Number <span style="color:var(--acc)">*</span></label><input type="tel" id="fphone" placeholder="+91 XXXXX XXXXX" autocomplete="tel" inputmode="numeric" pattern="[0-9+\s]*" maxlength="15" onkeypress="return /[0-9+\s]/.test(event.key)"
-                            oninput="this.value=this.value.replace(/[^0-9+\s]/g,'')"></div>
-                    <div class="fg">
-                        <label>Project Type <span style="color:var(--acc)">*</span></label>
-                        <select id="ftype">
-            <option value="">Select a project type...</option>
-            <option>UI/UX Design</option>
-            <option>Digital Modeling</option>
-            <option>Graphic Design</option>
-            <option>Photography</option>
-          </select>
-                    </div>
-                    <div class="fg">
-                        <label>Project Budget <span style="color:var(--acc)">*</span></label>
-                        <select id="fbudget">
-            <option value="">— Select your project budget —</option>
-            <option value="starter">Starter &nbsp;|&nbsp; &#8377;5,000 &ndash; &#8377;10,000</option>
-            <option value="standard">Standard &nbsp;|&nbsp; &#8377;10,000 &ndash; &#8377;20,000</option>
-            <option value="professional">Professional &nbsp;|&nbsp; &#8377;20,000 &ndash; &#8377;35,000</option>
-            <option value="premium">Premium &nbsp;|&nbsp; &#8377;35,000 &ndash; &#8377;40,000</option>
-            <option value="enterprise">Enterprise &nbsp;|&nbsp; &#8377;40,000+</option>
-            <option value="negotiable">Open to Negotiation &nbsp;|&nbsp; Let's Discuss</option>
-          </select>
-                    </div>
-                    <div class="fg"><label>Your Message <span style="color:var(--acc)">*</span></label><textarea id="fmsg" placeholder="Tell me about your project, goals, and timeline..." autocomplete="off"></textarea></div>
-                    <div id="ferr"></div>
-                    <button class="sbtn" onclick="sendMsg()">Contacting to Connect &#10140;</button>
-                </div>
-
-            </div>
-
-            <p class="rv" style="text-align:center;margin-top:20px;font-size:12px;color:var(--muted)">&#128205; Bangalore, Karnataka &nbsp;&#183;&nbsp; Open to Remote Work Worldwide</p>
-
-        </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer>
-        <div class="flogo">Deepak<em>.</em></div>
-        <p>&#169; 2026 Bojjagani Deepak &nbsp;&#183;&nbsp; Industrial Designer &amp; UI/UX Specialist</p>
-        <p>Bangalore &nbsp;&#183;&nbsp; Open to Remote Work</p>
-    </footer>
-
-    <script>
-        // ── Mobile nav
-        function toggleNav() {
-            document.getElementById('mobnav').classList.toggle('open')
-        }
-
-        function closeNav() {
-            document.getElementById('mobnav').classList.remove('open')
-        }
-        document.addEventListener('click', function(e) {
-            var m = document.getElementById('mobnav'),
-                b = document.getElementById('hbtn');
-            if (m.classList.contains('open') && !m.contains(e.target) && !b.contains(e.target)) m.classList.remove('open');
-        });
-
-        // ── Contact form
-        function sendMsg() {
-            var n = document.getElementById('fname').value.trim();
-            var e = document.getElementById('femail').value.trim();
-            var ph = document.getElementById('fphone').value.trim();
-            var m = document.getElementById('fmsg').value.trim();
-            var pt = document.getElementById('ftype').value;
-            var bd = document.getElementById('fbudget').value;
-            var err = document.getElementById('ferr');
-            err.style.display = 'none';
-            err.textContent = '';
-
-            if (!n) {
-                err.textContent = '⚠ Please enter your full name.';
-                err.style.display = 'block';
-                document.getElementById('fname').focus();
-                return;
-            }
-            if (!e || e.indexOf('@') < 1) {
-                err.textContent = '⚠ Please enter a valid email address.';
-                err.style.display = 'block';
-                document.getElementById('femail').focus();
-                return;
-            }
-            if (!ph || ph.length < 7) {
-                err.textContent = '⚠ Please enter a valid phone number.';
-                err.style.display = 'block';
-                document.getElementById('fphone').focus();
-                return;
-            }
-            if (!pt) {
-                err.textContent = '⚠ Please select a project type.';
-                err.style.display = 'block';
-                document.getElementById('ftype').focus();
-                return;
-            }
-            if (!bd) {
-                err.textContent = '⚠ Please select a budget range.';
-                err.style.display = 'block';
-                document.getElementById('fbudget').focus();
-                return;
-            }
-            if (!m) {
-                err.textContent = '⚠ Please write your message.';
-                err.style.display = 'block';
-                document.getElementById('fmsg').focus();
-                return;
-            }
-
-            // Show "Contacting to Connect..." spinner
-            document.getElementById('fFields').style.display = 'none';
-            document.getElementById('cOverlay').style.display = 'block';
-            document.getElementById('cSuccess').style.display = 'none';
-
-            // Send to Google Sheets via Apps Script Web App
-            var SHEET_URL = 'https://script.google.com/macros/s/AKfycbyWfpABmnEe16OW1zmYz3sCC0TUpABIC6At2a97Q03hqdxBU8JDQYImF-X0ygvEriMatw/exec';
-
-            fetch(SHEET_URL, {
-                    method: 'POST',
-                    mode: 'no-cors',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        timestamp: new Date().toLocaleString('en-IN', {
-                            timeZone: 'Asia/Kolkata'
-                        }),
-                        name: n,
-                        email: e,
-                        phone: ph,
-                        project_type: pt,
-                        budget: bd,
-                        message: m
-                    })
-                })
-                .then(function() {
-                    document.getElementById('cOverlay').style.display = 'none';
-                    document.getElementById('cSuccess').style.display = 'block';
-                })
-                .catch(function() {
-                    document.getElementById('cOverlay').style.display = 'none';
-                    document.getElementById('cSuccess').style.display = 'block';
-                });
-        }
-
-        function resetForm() {
-            document.getElementById('fFields').style.display = 'block';
-            document.getElementById('cOverlay').style.display = 'none';
-            document.getElementById('cSuccess').style.display = 'none';
-            document.getElementById('ferr').style.display = 'none';
-            ['fname', 'femail', 'fphone', 'ftype', 'fbudget', 'fmsg'].forEach(function(id) {
-                var el = document.getElementById(id);
-                if (el) el.value = '';
-            });
-        }
-
-        // ── Scroll reveal (iOS safe)
-        (function() {
-            var els = document.querySelectorAll('.rv');
-            if (!('IntersectionObserver' in window)) {
-                for (var i = 0; i < els.length; i++) els[i].classList.add('on');
-                return;
-            }
-            var obs = new IntersectionObserver(function(entries) {
-                entries.forEach(function(en, i) {
-                    if (en.isIntersecting) {
-                        var el = en.target;
-                        setTimeout(function() {
-                            el.classList.add('on');
-                        }, i * 55);
-                        obs.unobserve(el);
-                    }
-                });
-            }, {
-                threshold: 0.06,
-                rootMargin: '0px 0px -20px 0px'
-            });
-            for (var j = 0; j < els.length; j++) obs.observe(els[j]);
-        })();
-
-        // ── Nav active
-        (function() {
-            var ss = document.querySelectorAll('section[id]');
-            var ls = document.querySelectorAll('.nlinks a');
-            window.addEventListener('scroll', function() {
-                var cur = '';
-                ss.forEach(function(s) {
-                    if (window.pageYOffset >= s.offsetTop - 140) cur = s.id;
-                });
-                ls.forEach(function(a) {
-                    a.style.color = a.getAttribute('href') === '#' + cur ? '#edebe6' : '';
-                });
-            }, {
-                passive: true
-            });
-        })();
-    </script>
+<script src="js/main.js" defer></script>
+<script type="module" src="js/viewer.js"></script>
 </body>
-
 </html>
