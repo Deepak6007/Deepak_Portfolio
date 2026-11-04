@@ -2,3 +2,5 @@ node_modules/
 .DS_Store
 Thumbs.db
 *.blend1
+# Logos, profile pictures and watermarks stay private: never pushed to GitHub
+brand/
