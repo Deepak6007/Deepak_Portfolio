@@ -31,7 +31,7 @@ No build step. ES modules need a server: `node tools/serve.mjs` (or the preview 
 ## Content facts
 - Name: Deepak Bojjagani (professional). Main specialisation: Autodesk Alias / Class-A surfacing. The portfolio is automotive-focused. Don't claim CMF or Figma/UI work.
 - Experience: Maruti Suzuki (design intern, alloy & steel wheels, May–Sep 2025, Gurugram), Heed Jetboards (industrial designer, Mar 2025, Mysuru), AS Dream Studio (photography intern, Jun–Jul 2024, Bengaluru). B.A.&D. Industrial & Product Design, MSRUAS, 2021–2025.
-- Links: WhatsApp +91 99662 73444, email deepak7designer@gmail.com (client work), linkedin.com/in/deepakbojjagani, instagram.com/deepak_07_official, behance.net/deepak6007.
+- Links: phone and WhatsApp +91 93800 86551 (changed Nov 2026), email deepak7designer@gmail.com (client work), linkedin.com/in/deepakbojjagani, instagram.com/deepak_07_official, behance.net/deepak6007.
 - Projects: 01 VYTRON E1 (electric-scooter surfacing study from another designer's concept sketch, credited in the case study; hero is a transparent Cycles render of the olive/lime colourway; its card uses models/vytron.glb painted gunmetal like the wheel), 02 Hero Sports Bike (3D model card, gunmetal like the wheel), 03 Dodge Challenger (render, no web model), 04 Alloy wheel concept (from a Pinterest reference, Class-A surfaced in Alias; 3D model), 05 Jetboard joystick (3D model). Order follows the 2026 portfolio PDF. The Alias form studies and product models are in More studies, not a project.
 - More studies cards: tool icons (simple-icons SVG sprite at the top of `index.html`) plus background-removed model cut-outs in `img/studies/`. Clicking a card opens the full board.
 - Photography: removed from the home page. It becomes a separate `photography.html` walkthrough following Deepak's Behance Photography Portfolio (behance.net/gallery/240645241): cover, about, gear (Canon EOS 90D, 18–135 mm, 50 mm), contents, then chapters for Portrait, Monochrome, Nature, Street, Jewellery, Food, Lifestyle products, Products, Ceramic products and Photography, with polaroid-style frames on charcoal. Use ONLY the photos from that Behance portfolio (originals from Deepak). Never use other laptop photos. The Canon card (`E:\Camera photos`) holds a private family event: never use it.
@@ -40,7 +40,7 @@ No build step. ES modules need a server: `node tools/serve.mjs` (or the preview 
 
 ## Open items
 - `photography.html` is built from photos cropped out of the Behance slides (`img/photography/<chapter>/`, about 300–600 px wide). Swap in Deepak's original camera files when he sends them.
-- The Behance thank-you slide lists Instagram @deepak.07.jpg and +91 93800 86551; the site uses @deepak_07_official and +91 99662 73444. Confirm which the photography page should use.
+- The Behance thank-you slide lists Instagram @deepak.07.jpg; the site uses @deepak_07_official. Confirm which the photography page should use.
 - Vercel: `vercel.json` (clean URLs, security and cache headers, no build step), `.vercelignore`, `404.html`, `robots.txt`. Waiting on the domain: then update og:url/og:image, add a canonical link and `sitemap.xml`.
 - Before every push run `node tools/version-assets.mjs`: it tags CSS/JS links with a content hash (?v=) so browsers fetch changed files at once.
 - Deploy: the live repo's `main` publishes through `.github/workflows/static.yml`. This folder isn't a git repo; copy it into a clone of the repo (skip `.claude/launch.json`) and push.

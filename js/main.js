@@ -3,7 +3,7 @@
   'use strict';
 
   // ---- Settings you can change ----
-  var WHATSAPP = '919966273444';
+  var WHATSAPP = '919380086551';
   var EMAIL = 'deepak7designer@gmail.com';
   // Paste your Google Apps Script web-app URL here to also log every brief to your Google Sheet.
   // See apps-script/Code.gs and README.md. Leave empty to skip.
