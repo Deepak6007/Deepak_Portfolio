@@ -9,11 +9,12 @@
 .ph-cover > :not(.cover-stack){grid-column:1;min-width:0}
 .ph-cover .status{justify-self:start}
 .ph-cover .hero-title{font-size:clamp(2.4rem,5.4vw,5.6rem)}
-.cover-stack{grid-column:2;grid-row:1 / 5;align-self:center;position:relative;list-style:none;margin:0;padding:0;height:min(560px,62vh)}
-.cover-stack .pol{position:absolute;width:clamp(170px,17vw,250px)}
-.cover-stack .pol:nth-child(1){left:2%;top:4%;--r:-7deg}
-.cover-stack .pol:nth-child(2){right:0;top:30%;width:clamp(200px,21vw,300px);--r:5deg}
-.cover-stack .pol:nth-child(3){left:20%;bottom:0;--r:-2deg}
+/* one fixed-shape composition: every position and size is a % of the stack, so the overlap is identical at any width */
+.cover-stack{grid-column:2;grid-row:1 / 5;align-self:center;justify-self:center;position:relative;list-style:none;margin:0;padding:0;width:min(100%,540px);aspect-ratio:1/1}
+.cover-stack .pol{position:absolute;width:40%;padding:2% 2% 7%}
+.cover-stack .pol:nth-child(1){left:3%;top:4%;--r:-7deg}
+.cover-stack .pol:nth-child(2){right:1%;top:24%;width:50%;--r:5deg}
+.cover-stack .pol:nth-child(3){left:24%;bottom:3%;--r:-2deg}
 .js .cover-stack .pol{animation:drop .9s var(--ease) both}
 .js .cover-stack .pol:nth-child(2){animation-delay:.15s}
 .js .cover-stack .pol:nth-child(3){animation-delay:.3s}
@@ -60,15 +61,16 @@
 .chapter-head h2{font-size:var(--step-3);font-weight:600}
 .chapter-head > p:last-child{color:var(--ink-soft);max-width:42ch;justify-self:end}
 
-.board{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;justify-content:center;align-items:flex-start;gap:28px 22px}
-.board .pol.port{width:clamp(190px,15.5vw,270px)}
-.chapter{scroll-margin-top:40px}
-.board .pol.land{width:clamp(240px,25vw,380px)}
-.board .pol:nth-child(5n+1){--r:-3deg;margin-top:0}
-.board .pol:nth-child(5n+2){--r:2.5deg;margin-top:56px}
-.board .pol:nth-child(5n+3){--r:-1.5deg;margin-top:12px}
-.board .pol:nth-child(5n+4){--r:3deg;margin-top:64px}
-.board .pol:nth-child(5n+5){--r:-2deg;margin-top:20px}
+/* even columns: N photos per row (5 wide, 3 laptop/tablet, 2 small tablet, 1 phone); short last rows are centred */
+.board{--cols:5;--gap:24px;list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:32px var(--gap)}
+.board .pol,.board .pol.port,.board .pol.land{width:calc((100% - (var(--cols) - 1) * var(--gap)) / var(--cols))}
+.board .pol:nth-child(5n+1){--r:-2.5deg}
+.board .pol:nth-child(5n+2){--r:2deg}
+.board .pol:nth-child(5n+3){--r:-1.2deg}
+.board .pol:nth-child(5n+4){--r:2.5deg}
+.board .pol:nth-child(5n+5){--r:-1.8deg}
+@media (max-width:1180px){.board{--cols:3}}
+@media (max-width:700px){.board{--cols:2;--gap:18px}}
 .board .pol:hover,.board .pol:focus-within{transform:rotate(0) translateY(-8px) scale(1.03);z-index:2;box-shadow:0 1px 0 rgba(255,255,255,.4) inset,0 34px 50px -20px rgba(0,0,0,.9),0 2px 6px rgba(0,0,0,.35)}
 .board .pol{position:relative}
 
@@ -82,7 +84,7 @@
 /* ---------- responsive ---------- */
 @media (max-width:960px){
   .ph-cover{grid-template-columns:1fr;min-height:auto;padding-top:120px}
-  .cover-stack{grid-column:1;grid-row:auto;height:340px;margin-top:40px}
+  .cover-stack{grid-column:1;grid-row:auto;width:min(100%,460px);margin-top:40px}
   .ph-facts{grid-template-columns:1fr}
   .toc{grid-template-columns:1fr}
   .chapter-head{grid-template-columns:auto 1fr}
@@ -90,10 +92,8 @@
   .ph-thanks .direct-list{grid-template-columns:1fr}
 }
 @media (max-width:560px){
-  .cover-stack{height:260px}
-  .cover-stack .pol{width:150px}
-  .cover-stack .pol:nth-child(2){width:180px}
-  .board{gap:22px}
-  .board .pol,.board .pol.port,.board .pol.land{width:100%;max-width:360px;margin-top:0;--r:0deg}
+  .board{--cols:1;gap:22px}
+  .board .pol,.board .pol.port,.board .pol.land{max-width:360px;--r:0deg}
+  .board .pol.port{max-width:320px} /* portraits are about 300 px wide: never enlarge them */
   .pol{padding:8px 8px 30px}
 }

@@ -1,4 +1,4 @@
-/* 3D viewers: hero bike plus lazy viewers for the joystick and wheel. */
+/* 3D viewers: lazy viewers for the project cards and the joystick case study. */
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
@@ -111,13 +111,6 @@ function createViewer(canvas, url, opts = {}) {
 }
 
 if (supportsWebGL()) {
-  // Hero bike
-  const hero = document.getElementById('hero-canvas');
-  const stage = hero && hero.closest('.hero-stage');
-  if (hero) {
-    hero.addEventListener('model-error', () => stage.classList.add('no-3d'));
-    createViewer(hero, 'models/bikee.glb', { color: '#8496bf', metal: 0.5, rough: 0.3, view: [1, 0.2, 0.8], distance: 1.0, sweep: true, spin: 0.9, exposure: 0.85 });
-  }
   // Lazy viewers: start when scrolled into view (or when their case study opens)
   const minis = Array.from(document.querySelectorAll('.mini-canvas'));
   const start = (c) => {
@@ -129,6 +122,5 @@ if (supportsWebGL()) {
   }, { rootMargin: '200px' });
   minis.forEach((c) => io.observe(c));
 } else {
-  document.querySelectorAll('.hero-stage').forEach((s) => s.classList.add('no-3d'));
   document.querySelectorAll('.mini-canvas').forEach((c) => { c.parentElement.style.display = 'none'; });
 }
